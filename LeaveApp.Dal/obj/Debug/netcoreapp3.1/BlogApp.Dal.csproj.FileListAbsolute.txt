@@ -1,0 +1,11 @@
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\bin\Debug\netcoreapp3.1\BlogApp.Dal.deps.json
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\bin\Debug\netcoreapp3.1\BlogApp.Dal.runtimeconfig.json
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\bin\Debug\netcoreapp3.1\BlogApp.Dal.runtimeconfig.dev.json
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\bin\Debug\netcoreapp3.1\BlogApp.Dal.dll
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\bin\Debug\netcoreapp3.1\BlogApp.Dal.pdb
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\obj\Debug\netcoreapp3.1\BlogApp.Dal.AssemblyInfoInputs.cache
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\obj\Debug\netcoreapp3.1\BlogApp.Dal.AssemblyInfo.cs
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\obj\Debug\netcoreapp3.1\BlogApp.Dal.csproj.CoreCompileInputs.cache
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\obj\Debug\netcoreapp3.1\BlogApp.Dal.dll
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\obj\Debug\netcoreapp3.1\BlogApp.Dal.pdb
+C:\Users\InfinityMesh\Desktop\test\test - app\LeaveApp.Dal\obj\Debug\netcoreapp3.1\BlogApp.Dal.genruntimeconfig.cache

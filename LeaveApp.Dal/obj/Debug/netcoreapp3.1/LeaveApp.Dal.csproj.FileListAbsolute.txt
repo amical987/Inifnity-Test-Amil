@@ -1,0 +1,12 @@
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\bin\Debug\netcoreapp3.1\LeaveApp.Dal.deps.json
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\bin\Debug\netcoreapp3.1\LeaveApp.Dal.runtimeconfig.json
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\bin\Debug\netcoreapp3.1\LeaveApp.Dal.runtimeconfig.dev.json
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\bin\Debug\netcoreapp3.1\LeaveApp.Dal.dll
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\bin\Debug\netcoreapp3.1\LeaveApp.Dal.pdb
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\obj\Debug\netcoreapp3.1\LeaveApp.Dal.csprojAssemblyReference.cache
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\obj\Debug\netcoreapp3.1\LeaveApp.Dal.AssemblyInfoInputs.cache
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\obj\Debug\netcoreapp3.1\LeaveApp.Dal.AssemblyInfo.cs
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\obj\Debug\netcoreapp3.1\LeaveApp.Dal.csproj.CoreCompileInputs.cache
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\obj\Debug\netcoreapp3.1\LeaveApp.Dal.dll
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\obj\Debug\netcoreapp3.1\LeaveApp.Dal.pdb
+C:\Users\InfinityMesh\source\repos\Leave application\LeaveApp.Dal\obj\Debug\netcoreapp3.1\LeaveApp.Dal.genruntimeconfig.cache
