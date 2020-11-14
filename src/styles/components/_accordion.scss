@@ -1,0 +1,68 @@
+// .accordion-item {
+//     position: relative;
+//     display: -ms-flexbox;
+//     display: flex;
+//     -ms-flex-direction: column;
+//     flex-direction: column;
+//     min-width: 0;
+//     word-wrap: break-word;
+//     background-clip: border-box;
+//     border-radius: .25rem;
+//     &:last-child {
+//         border-bottom: none;
+//     }
+//     .collapse {
+//         &:not(.show) {
+//             display: none;
+//         }
+//     }
+//     .collapsing {
+//         position: relative;
+//         height: 0;
+//         overflow: hidden;
+//         transition: height .35s ease;
+//     }
+//     .accordion-header {
+//         span {
+//             font-size: 1rem;
+//             @include ptSansRegular();
+//             line-height: 1;
+//             border: none;
+//             background-color: transparent;
+//             padding: 0;
+//             cursor: pointer;
+//             position: relative;
+//             padding: 8px 15px 5.5px 40px;
+//             &:focus {
+//                 outline: none;
+//                 box-shadow: none;
+//             }
+//             &:hover {
+//                 &:before {
+//                     transform: rotate(180deg);
+//                 }
+//             }
+//             &:before {
+//                 content: "expand_less";
+//                 font-family: "Material Icons";
+//                 font-size: 1.6rem;
+//                 line-height: 1;
+//                 position: absolute;
+//                 left: 5px;
+//                 top: 5px;
+//                 -webkit-transition: all 0.3s ease;
+//                 -moz-transition: all 0.3s ease;
+//                 -o-transition: all 0.3s ease;
+//                 transition: all 0.3s ease;
+//             }
+//             &.collapsed {
+//                 &:before {
+//                     content: "expand_more";
+//                 }
+//             }
+//         }
+//     }
+//     .accordion-body {
+//         padding: 10px 0 17px 0;
+//     }
+// }

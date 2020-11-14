@@ -1,0 +1,82 @@
+<div *ngIf="localeForm">
+    <app-breadcrumb></app-breadcrumb>
+    <div class="save-edit-container">
+        <button class="save-btn" (click)="edit()">Save</button>
+    </div>
+    <div class="card">
+        <div class="custom-tabs">
+            <div class="tab">
+                <input type="radio" name="css-tabs" checked class="tab-switch">
+                <label for="tab-1" class="tab-label"></label>
+                <div class="tab-content">
+                    <div class="desing-intro-form-group">
+                        <form [formGroup]="localeForm">
+                            <div class="form-container">
+                                <div class="form-section">
+                                    <div class="form-group inline-label"
+                                        [ngClass]="{' has-error': ((localeForm.controls.language.errors?.required || 
+                                                    localeForm.controls.language.errors?.maxlength) && localeForm.controls.language.touched) || !validForm}">
+                                        <div class="error-message"
+                                            *ngIf="(localeForm.controls.language.errors?.required  && localeForm.controls.language.touched) || !validForm">
+                                            <strong>Error</strong>
+                                            Language is required.
+                                        </div>
+                                        <div class="error-message"
+                                            *ngIf="localeForm.controls.language.errors?.maxlength  && localeForm.controls.language.touched">
+                                            <strong>Error </strong>
+                                            Language must be no more than houndred characters long.
+                                        </div>
+                                        <label for="language">Language</label>
+                                        <input type="text" placeholder="Language" formControlName="language">
+                                    </div>
+                                    <div class="form-group inline-label" [ngClass]="{' has-error': ((localeForm.controls.lcid.errors?.required || 
+                                               localeForm.controls.lcid.errors?.maxlength) && 
+                                               localeForm.controls.lcid.touched) || !validForm}">
+                                        <div class="error-message"
+                                            *ngIf="localeForm.controls.lcid.errors?.maxlength  && localeForm.controls.lcid.touched">
+                                            <strong> Error</strong>
+                                            Lcid must be no more than ten characters long.
+                                        </div>
+                                        <div class="error-message"
+                                            *ngIf="(localeForm.controls.lcid.errors?.required && localeForm.controls.lcid.touched) || !validForm">
+                                            <strong>Error</strong>
+                                            Lcid is required.
+                                        </div>
+                                        <label for="lcid">Lcid</label>
+                                        <input type="text" placeholder="Lcid" formControlName="lcid">
+                                    </div>
+                                    <div class="form-group inline-label" [ngClass]="{' has-error': ((localeForm.controls.region.errors?.required || 
+                                                 localeForm.controls.region.errors?.maxlength) && 
+                                                 localeForm.controls.lcid.touched) || !validForm}">
+                                        <div class="error-message"
+                                            *ngIf="localeForm.controls.region.errors?.maxlength  && localeForm.controls.region.touched">
+                                            <strong>Error</strong>
+                                            Region must not be no more than houndred characters long.
+                                        </div>
+                                        <div class="error-message"
+                                            *ngIf="(localeForm.controls.region.errors?.required && localeForm.controls.region.touched) || !validForm">
+                                            <strong>Error</strong>
+                                            Region is required.
+                                        </div>
+                                        <label for="region">Region</label>
+                                        <input type="text" placeholder="Region" formControlName="region">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="fallbackLocale">Select fallback language</label>
+                                        <div class="select">
+                                            <select id="options" formControlName="fallbackLocaleId">
+                                                <option [value]="null">None</option>
+                                                <option [value]="locale.id" *ngFor="let locale of locales">
+                                                    {{locale.language}}</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

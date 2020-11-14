@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-3">
+        <div class="tree-list-wrapper">
+            <app-tree-list [treeApiName]="'media'" [allowDrag]="true" (onClick)="openMedia($event)"></app-tree-list>
+        </div>
+    </div>
+    <div class="col-9">
+        <app-breadcrumb></app-breadcrumb>
+        <router-outlet></router-outlet>
+</div>

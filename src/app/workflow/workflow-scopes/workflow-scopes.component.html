@@ -1,0 +1,25 @@
+<div class="section-title">
+    <i class="icon-placeholders"></i>
+    <span>Section Titl1e</span>
+</div>
+<div class="save-edit-container">
+    <button class="save-btn" (click)="update()">Update</button>
+</div>
+<div class="card">
+    <div class="custom-tabs second-tabs">
+        <app-workflow-edit-navigation></app-workflow-edit-navigation>
+        <div class="tab-content">
+            <div class="tab-inner-container">
+                <div class="form-container">
+                    <div class="form-section">
+                        <span>Allowed child node types</span>
+                        <p>Allow content of the specified types to be created underneath content of this type
+                            <div class="form-group inline-label">
+                                <app-multiple-tree-list treeApiName="templates"></app-multiple-tree-list>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

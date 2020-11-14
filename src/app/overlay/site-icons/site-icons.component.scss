@@ -1,0 +1,35 @@
+.list-body{
+    .form-group{
+        &.selected-icon-group{
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .mat-icon{
+            margin-left: 10px;
+            display: inline-block;
+        }
+        span{
+            margin-bottom: 0;
+        }
+    }
+    .icons-list{
+        position: relative;
+        margin-top: 17px;
+        height: 100%;
+    }
+    .mat-icon-wrapper{
+        display: inline-block;
+        cursor: pointer;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        text-align: center;
+        width: auto;
+        height: auto;
+        padding: 0;
+        &:hover{
+            transition: background-color .3s;
+        }
+    }
+
+}

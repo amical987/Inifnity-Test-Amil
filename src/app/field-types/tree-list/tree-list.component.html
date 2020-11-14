@@ -1,0 +1,42 @@
+<div class="form-group">
+    <span class="search-icon"></span>
+    <input type="text" class="search-input" placeholder="Type to filter..." [value]="searchKey" (input)="filterSearchKey($event)">
+</div>
+<tree-root [busyIndicator]="busyIndicator.isBusy" [overlay]="true" [options]="options" [focused]="true"
+    (activate)="onSelectNode($event)" (initialized)="initialized()" (moveNode)="onMoveNode($event)" #tree *ngIf="searchKey == ''" >
+
+    <ng-template #treeNodeTemplate let-node let-index="index">
+        <div (dblclick)="dblClick($event, node)" (contextmenu)="onContextMenu($event, node)">
+            <span class="node-icon">
+                <i class="icon-home"></i>
+            </span>
+            <span>{{ node.data.name }}</span>
+        </div>
+    </ng-template>
+
+    <ng-template #loadingTemplate>
+        <div class="loading-spinner-circle size-8"></div>
+        <span>Loading...</span>
+    </ng-template>
+
+</tree-root>
+<app-menu-panel (onSelectMenuAction)="onSelectMenuAction($event)" #menupanel [items]="menuItems"></app-menu-panel>
+
+<div class="linear-list-pages" *ngIf="searchKey != ''" >
+    <button *ngFor="let item of searchedList" >
+        <mat-icon>{{item.icon}}</mat-icon>
+        <span>{{item.name}}</span>
+    </button>
+    <!-- <button>
+        <mat-icon>folder</mat-icon>
+        <span>Home</span>
+    </button>
+    <button>
+        <mat-icon>folder</mat-icon>
+        <span>Home</span>
+    </button>
+    <button>
+        <mat-icon>folder</mat-icon>
+        <span>Home</span>
+    </button> -->
+</div>

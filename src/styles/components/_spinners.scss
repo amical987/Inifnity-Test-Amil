@@ -1,0 +1,120 @@
+.loading-spinner-circle {
+    display: inline-block;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 50%;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    animation: cssload-spin 800ms infinite linear;
+    -o-animation: cssload-spin 800ms infinite linear;
+    -ms-animation: cssload-spin 800ms infinite linear;
+    -webkit-animation: cssload-spin 800ms infinite linear;
+    -moz-animation: cssload-spin 800ms infinite linear;
+
+    $i: 12;
+
+    @while $i <= 64 {
+        &.size-#{$i} {
+            height: #{$i}px;
+            width: #{$i}px;
+        }
+
+        $i: $i + 2;
+    }
+
+    &[hidden] {
+        display: none;
+    }
+}
+
+.loading-spinner {
+    &.overlay {
+        &:before {
+            content: "";
+            // background-color: #f5f7fa;
+            // opacity: 0.5;
+            background-color: #ffffff;
+            opacity: 0.95;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 99;
+        }
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 100;
+        width: 64px;
+        height: 64px;
+        margin-left: -32px;
+        margin-top: -32px;
+        border: 1px solid rgb(0, 0, 0);
+        border-radius: 50%;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        animation: cssload-spin 800ms infinite linear;
+        -o-animation: cssload-spin 800ms infinite linear;
+        -ms-animation: cssload-spin 800ms infinite linear;
+        -webkit-animation: cssload-spin 800ms infinite linear;
+        -moz-animation: cssload-spin 800ms infinite linear;
+    }
+
+    $i: 12;
+
+    @while $i <= 64 {
+        &.size-#{$i} {
+            &:after {
+                height: #{$i}px;
+                width: #{$i}px;
+                margin-left: -#{$i / 2}px;
+                margin-top: -#{$i / 2}px;
+            }
+        }
+
+        $i: $i + 2;
+    }
+}
+
+@keyframes cssload-spin {
+    100% {
+        transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes cssload-spin {
+    100% {
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-ms-keyframes cssload-spin {
+    100% {
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes cssload-spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes cssload-spin {
+    100% {
+        -moz-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

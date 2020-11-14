@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-lg-2 remove-left-right-padding">
+        <div class="tree-list-wrapper-full-height">
+            <app-tree-list treeApiName="templates" [allowDrag]="true" (onNodeMove)="onNodeMove($event)"
+                (onSelect)="onSelect($event)" (onMenuSelect)="onMenuSelect($event)"></app-tree-list>
+        </div>
+    </div>
+    <div class="col-lg-10 content-padding">
+        <router-outlet></router-outlet>
+    </div>
+</div>

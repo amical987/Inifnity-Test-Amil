@@ -1,0 +1,88 @@
+<div *ngIf="templateDesignForm && !reorderFields" [busyIndicator]="busyIndicator.isBusy" [overlay]="true">
+    <app-error-panel></app-error-panel>
+    <form novalidate [formGroup]="templateDesignForm">
+        <div class="design-intro">
+            <div class="design-intro-icon-overlay" (click)="displayIconOverlay()">
+                <i *ngIf="!iconToShow" class="fa fa-folder" aria-hidden="true"></i>
+                <mat-icon *ngIf="iconToShow" aria-hidden="true">{{iconToShow}}</mat-icon>
+            </div>
+            <div class="desing-intro-form-group">
+                <div class="form-group has-assitive-msg" [ngClass]="{'has-error': validation.displayMessage['name'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ validation.displayMessage['name'] }}
+                    </div>
+                    <input id="name" type="text" placeholder="*Enter a name..." formControlName="name" />
+                    <div class="assitive-msg" [hidden]="(templateDesignForm.get('name').value=='' && !isEdit) || showInputCodeName" (click)="showInputCodeName=true">
+                        {{ isEdit ?  templateDesignForm.get('codeName').value : (templateDesignForm.get('name').value | codeName) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input id="description" type="text" placeholder="Enter a description..." formControlName="description" />
+                </div>
+            </div>
+            <div *ngIf="showInputCodeName">
+                <div class="form-group lock-container">
+                    <i class="lock-icon" (click)="showInputCodeName=false"></i>
+                    <input id="codeName" type="text" placeholder="(automatic)" formControlName="codeName" class="lock"
+                        [value]="templateDesignForm.get('codeName')?.value | codeName"/>
+                </div>
+            </div>
+        </div>
+
+        <div formArrayName="sections">
+            <div class="design-content"
+                *ngFor="let section of templateDesignForm['controls'].sections['controls']; let sectionIndex=index;let last=last;"
+                [formGroupName]="sectionIndex">
+                <div class="section-item-container" [ngClass]="{'inactive': last}">
+                    <i class="delete-icon" (click)="removeSection(sectionIndex)"></i>
+                    <span class="title"> <span *ngIf="last">Section</span>
+                        <input id="{{'sectionName'+ sectionIndex}}" type="text" placeholder="*Enter a section name..." *ngIf="!last"
+                            formControlName="name" />
+                    </span>
+                    <div class="checkbox-container">
+                        <label class="control custom-checkbox">Collapsible
+                            <input type="checkbox" />
+                            <div class="control-indicator"></div>
+                        </label>
+                    </div>
+                    <div formArrayName="fields">
+                        <div class="section-item">
+                            <div *ngFor="let field of section['controls'].fields['controls']; let filedIndex=index;let islastField=last"
+                                [formGroupName]="filedIndex">
+                                <div class="section-item-form-container">
+                                    <div class="form-group">
+                                        <input id="{{'name'+ sectionIndex + filedIndex}}" type="text"
+                                            (keyup)="addField(section,islastField)" placeholder="Enter a name..."
+                                            formControlName="name" />
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="select">
+                                            <select id="{{'fieldTypes'+ sectionIndex + filedIndex}}"
+                                                formControlName="fieldTypeId">
+                                                <option *ngFor="let fieldType of fieldTypes; let i = index"
+                                                    [value]="fieldType.id">
+                                                    {{fieldType.displayName}}
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="{{'dataSource' + sectionIndex + filedIndex}}"
+                                            formControlName="defaultValue" type="text" placeholder="Enter a Datasource...">
+                                    </div>
+                                </div>
+                                <div class="section-item-icons-container">
+                                    <i class="settings-icon" (click)="showFieldSettings(field)"></i>
+                                    <i class="delete-icon" (click)="removeField(section, filedIndex)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="add-section" (click)="addNewSection()">Add a new section</span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<app-design-template-order *ngIf="reorderFields && sections" [sections]="sections"></app-design-template-order>

@@ -1,0 +1,161 @@
+<header>
+    <div id="header">
+        <div class="logo-container">
+            <button *ngIf="showFlyoutIcon"  mat-icon-button  (click)="menuIconClick()"><mat-icon>menu</mat-icon></button>
+
+            <a routerLink="/">
+                Infinity CMS
+            </a>
+        </div>
+        <div class="header-container">
+            <div class="header-search-container">
+                <div class="form-group-container">
+                    <div class="form-group">
+                        <input type="text" placeholder="Type to search something">
+                    </div>
+                </div>
+            </div>
+            <div class="header-nav-container" *ngIf="userPreferences">
+                <ul>
+                    <li>
+                        <span class="icon-bell"></span>
+                        <div class="right-sidebar">
+                            <ul style="display: none;">
+                                <li><a href="#">bell item 1</a></li>
+                                <li><a href="#">bell item 2</a></li>
+                                <li><a href="#">bell item 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li [ngClass]="{'show': userPreferencePanel}">
+                        <span class="icon-settings" (click)="userPreferencePanel=!userPreferencePanel"></span>
+                        <div class="right-sidebar">
+                            <div class="list-header">
+                                <span>Portal Settings</span>
+                                <a (click)="userPreferencePanel=!userPreferencePanel" class="close-sidebar"></a>
+                            </div>
+                            <div class="list-body">
+                                <span class="portal-subtitle">Choose welcome page</span>
+                                <div class="radio-content">
+                                    <div class="radio-item add-icon">
+                                        <input type="radio" name="welcomePage" id="welcomeHome" [value]="0"
+                                            [checked]="userPreferences.welcomePage === 0" (change)="updatePreferences()"
+                                            [(ngModel)]="userPreferences.welcomePage" />
+                                        <label for="welcomeHome">Home</label>
+                                    </div>
+                                    <div class="radio-item add-icon">
+                                        <input type="radio" name="welcomePage" id="welcomeDashboard" [value]="1"
+                                            [checked]="userPreferences.welcomePage === 1" (change)="updatePreferences()"
+                                            [(ngModel)]="userPreferences.welcomePage" />
+                                        <label for="welcomeDashboard">Dashboard</label>
+                                    </div>
+                                </div>
+                                <span class="portal-subtitle">Choose sidebar layout</span>
+                                <div class="radio-content navigation-content">
+                                    <div class="radio-item add-icon">
+                                        <input type="radio" name="sidebar" id="sidebarDocked" [value]="0"
+                                            [checked]="userPreferences.sidebarLayout === 0"
+                                            (change)="updateSidebarSettings()"
+                                            [(ngModel)]="userPreferences.sidebarLayout" />
+                                        <label for="sidebarDocked">Docked</label>
+                                    </div>
+                                    <div class="radio-item add-icon">
+                                        <input type="radio" name="sidebar" id="sidebarFlyout" [value]="1"
+                                            [checked]="userPreferences.sidebarLayout === 1"
+                                            (change)="updateSidebarSettings()"
+                                            [(ngModel)]="userPreferences.sidebarLayout" />
+                                        <label for="sidebarFlyout">Flyout</label>
+                                    </div>
+                                </div>
+                                <span class="portal-subtitle">Choose a color scheme</span>
+                                <div class="radio-content theme-content">
+                                    <div class="radio-item">
+                                        <input type="radio" name="themeColor" id="themeDefault" [value]="0"
+                                            [checked]="userPreferences.theme === 0" (change)="updateThemePreferences()"
+                                            [(ngModel)]="userPreferences.theme" />
+                                        <label for="themeDefault">
+                                            <img src="/assets/images/header/Group592.svg" alt="Logo">
+                                        </label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="themeColor" id="themeNav" [value]="1"
+                                            [checked]="userPreferences.theme === 1" (change)="updateThemePreferences()"
+                                            [(ngModel)]="userPreferences.theme" />
+                                        <label for="themeNav">
+                                            <img src="/assets/images/header/Group593.svg" alt="Logo">
+                                        </label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="themeColor" id="themeNavDark" [value]="2"
+                                            [checked]="userPreferences.theme === 2" (change)="updateThemePreferences()"
+                                            [(ngModel)]="userPreferences.theme" />
+                                        <label for="themeNavDark">
+                                            <img src="/assets/images/header/Group594.svg" alt="Logo">
+                                        </label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="themeColor" id="themeDark" [value]="3"
+                                            [checked]="userPreferences.theme === 3" (change)="updateThemePreferences()"
+                                            [(ngModel)]="userPreferences.theme" />
+                                        <label for="themeDark">
+                                            <img src="/assets/images/header/Group595.svg" alt="Logo">
+                                        </label>
+                                    </div>
+                                </div>
+                                <span class="portal-subtitle">High Contrast Theme</span>
+                                <div class="radio-content contrast-content">
+                                    <div class="radio-item">
+                                        <input type="radio" name="contrast" id="noneContastTheme" [value]="0"
+                                            [checked]="userPreferences.highContrastTheme === 0"
+                                            (change)="updateThemePreferences()"
+                                            [(ngModel)]="userPreferences.highContrastTheme" />
+                                        <label for="noneContastTheme">None</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="contrast" id="whiteContastTheme" [value]="1"
+                                            [checked]="userPreferences.highContrastTheme === 1"
+                                            (change)="updateThemePreferences()"
+                                            [(ngModel)]="userPreferences.highContrastTheme" />
+                                        <label for="whiteContastTheme">White</label>
+                                    </div>
+                                    <div class="radio-item">
+                                        <input type="radio" name="contrast" id="darkContastTheme" [value]="2"
+                                            [checked]="userPreferences.highContrastTheme === 2"
+                                            (change)="updateThemePreferences()"
+                                            [(ngModel)]="userPreferences.highContrastTheme" />
+                                        <label for="darkContastTheme">Dark</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control custom-checkbox">Enable Pop-Up screens
+                                        <input type="checkbox" [checked]="userPreferences.enablePopupNotifications"
+                                            (change)="updatePreferences ()"
+                                            [(ngModel)]="userPreferences.enablePopupNotifications">
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="list-footer">
+                                <ul>
+                                    <span class="portal-subtitle">Advanced Settings</span>
+                                    <li>
+                                        <a href="#">Restore default</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Export settings</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Import settings</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <app-header-my-profile></app-header-my-profile>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>

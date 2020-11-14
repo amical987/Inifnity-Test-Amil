@@ -1,0 +1,48 @@
+<form [busyIndicator]="isBusy" [overlay]="true" #form="ngForm"
+    (ngSubmit)="form.valid && login(user)"
+    [class.was-validated]="form.invalid && form.submitted && (form.dirty || form.touched)"
+    class="needs-validation login" novalidate>
+    <div>
+        <div class="title-layout">
+            <h2 >Type your credentials</h2>
+            <p class="font-size-15" >If you don't know your password, no problem at all.
+                Please click on this <a routerLink="/authenticate/forgot-password">link</a></p>
+        </div>
+        <div class="mb-2 notification error" 
+            *ngIf="error && error.error_description === 'invalid_username_or_password'">
+            The password or username are invalid.
+        </div>
+        <div class="mb-2 notification error" *ngIf="error && error.error === 'account_status_not_valid'">
+            {{error.error_description}}
+        </div>
+        <div class="mb-2 d-flex flex-column">
+            <div class="form-group">
+                <label class="text-neutral-6" for="username">Email:</label>
+                <div class="input-icon right-icon">
+                    <cms-icon icon="account_circle"></cms-icon>
+                    <input required minlength="5" #usernameFormControl="ngModel" [email]="true" autofocus required
+                        type="email" [(ngModel)]="user.username"  placeholder="Enter your email"
+                        class="form-control" name="username" id="username">
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="text-neutral-6" for="password">Password:</label>
+                <div class="input-icon right-icon">
+                    <cms-icon icon="lock"></cms-icon>
+                    <input autocomplete required #passwordFormControl="ngModel" autofocus required type="password"
+                        [(ngModel)]="user.password" placeholder="Please enter your password"  class="form-control"
+                        name="password" id="password">
+                </div>
+            </div>
+            <div class="form-group d-flex  justify-content-between">
+                <div class="custom-control custom-checkbox text-neutral-5">
+                    <input name="remeberMe" [(ngModel)]="remeberMe" type="checkbox" class="custom-control-input"
+                        id="remeberMe">
+                    <label  class="custom-control-label" for="remeberMe">Remember me?</label>
+                </div>
+                <a  routerLink="/authenticate/forgot-password">Forgot password?</a>
+            </div>
+            <button  type="submit" class="btn w-150px btn-primary align-self-center">Sign In</button>
+        </div>
+    </div>
+</form>

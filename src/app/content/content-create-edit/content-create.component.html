@@ -1,0 +1,44 @@
+<app-content-navigation-bar (onNew)="newContent()" (onNewWithAnother)="newContentWithRest()"
+    (onUpdate)="updateContent()"></app-content-navigation-bar>
+
+<div class="card" *ngIf="contentSections.length>0">
+    <div class="custom-tabs second-tabs">
+        <div class="tab">
+            <label for="tab-1" class="tab-label">Content</label>
+        </div>
+        <div class="tab">
+            <a>
+                <label for="tab-2" class="tab-label">Properties</label>
+            </a>
+        </div>
+        <div class="tab-content">
+            <form novalidate [formGroup]="contentForm">
+                <div class="form-container" [busyIndicator]="busyIndicator.isBusy" [overlay]="true">
+                    <div class="col-12 col-md-12 col-lg-9 col-xl-7">
+                        <app-dynamic-content-rendering [control]="nameControl" [validationMessage]="displayMessage"
+                            [customFormName]="contentForm">
+                        </app-dynamic-content-rendering>
+                    </div>
+                    <mat-accordion multi>
+                        <mat-expansion-panel expanded *ngFor="let item of contentSections;">
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{item.name}}
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-lg-9 col-xl-7">
+                                    <div *ngFor="let fc of item.controlFields" class="form-row">
+                                        <app-dynamic-content-rendering [control]="fc.control"
+                                            [validationMessage]="displayMessage" [customFormName]="contentGroup">
+                                        </app-dynamic-content-rendering>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

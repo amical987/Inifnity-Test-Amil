@@ -1,0 +1,18 @@
+<div class="header-user-info" (click)="toggleProfileMenu = !toggleProfileMenu">
+  <img [src]="user.profilePhoto || '../../../assets/images/no-photo.png'" [alt]="user.username" >
+  <div class="user-info-content">
+      <span class="name">Welcome, {{user.firstName}}!</span>
+      <span class="title">{{user.username}}</span>
+  </div>
+
+  <div [style.display]="toggleProfileMenu ? 'block' : 'none'" class="dropdown-menu dropdown-menu-right">
+    <span class="caret"></span>
+    <a routerLink="/users/account/my" class="dropdown-item">
+     <cms-icon icon="account_circle"></cms-icon> <span >Account Settings</span>
+    </a>
+    <hr>
+    <a  (click)="logOut()" class="dropdown-item">
+      <cms-icon icon="exit_to_app"></cms-icon> <span> Logout</span>
+    </a>
+  </div>
+</div>

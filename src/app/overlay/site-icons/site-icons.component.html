@@ -1,0 +1,38 @@
+<div class="right-sidebar quick-info show" *ngIf="iconsCategories">
+    <div class="list-header">
+        <span>Icons</span>
+        <a (click)="cancel()" class="close-sidebar"></a>
+    </div>
+    <div class="list-body">
+        <span class="subtitle">General</span>
+        <div class="form-group">
+            <span class="search-icon"></span>
+            <input type="text" class="search-input" placeholder="Type to filter..." [value]="searchKey" (input)="filterSearchKey($event)">
+        </div>
+        <div class="form-group">
+            <div class="select">
+                <select (input)="filterCategory($event)">
+                    <option value="all">Please select category</option>
+                    <option *ngFor="let option of categories" value="{{option}}">{{option}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group selected-icon-group" *ngIf="icon">
+            <span class="selected-icon-text">Selected icon: </span>
+            <mat-icon>{{icon.name}}</mat-icon>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="icons-list" [busyIndicator]="busyIndicator.isBusy" [overlay]="true">
+            <div class="mat-icon-wrapper col-md-6 col-sm-6" *ngFor="let iconItem of iconsFilter">
+                <mat-icon (click)="selectIcon(iconItem)" aria-hidden="true" [ngClass]="{'active-icon' : icon && icon.name == iconItem.name}">{{iconItem.name}}</mat-icon>
+            </div>
+        </div>
+    </div>
+    <div class="list-footer">
+        <div class="btn-container">
+            <button (click)="apply()" class="primary-btn">Apply</button>
+            <button (click)="cancel()" class="primary-btn white-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+

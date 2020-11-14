@@ -1,0 +1,26 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="section-title">
+    <i class="icon-templates"></i>
+    <span>Permissions</span>
+</div>
+<div class="save-edit-container">
+    <button class="save-btn" (click)="save()">Save</button>
+</div>
+<div class="card" *ngIf="currentTemplate">
+    <div class="custom-tabs second-tabs">
+        <app-data-template-navigation></app-data-template-navigation>
+        <div class="tab">
+            <div class="tab-content">
+                <div class="form-container" [busyIndicator]="busyIndicator.isBusy" [overlay]="true">
+                    <div class="permissions-inner-container">
+                        <span>Allowed child node types</span>
+                        <p>Allow content of the specified types to be created underneath content of this type
+                        <div class="form-group inline-label">
+                            <app-multiple-tree-list treeApiName="templates"></app-multiple-tree-list>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

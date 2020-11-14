@@ -1,0 +1,32 @@
+<div [ngSwitch]="data.type" [@fadeAnimation]="{value: animationState, params:
+    { fadeIn: data.alertConfig.animation.fadeIn, fadeOut: data.alertConfig.animation.fadeOut }}"
+    (@fadeAnimation.done)="onFadeFinished($event)">
+
+    <div *ngSwitchCase="'warning'" class="notification-container error">
+        <div class="notification-message">
+            <span>{{data.title}}</span>
+            <p>{{data.text}} </p>
+        </div>
+        <div class="notification-close">
+            <span class="material-icons" (click)="close()">close</span>
+        </div>
+    </div>
+    <div *ngSwitchCase="'success'" class="notification-container success">
+        <div class="notification-message">
+            <span>{{data.title}}</span>
+            <p>{{data.text}} </p>
+        </div>
+        <div class="notification-close">
+            <span class="material-icons" (click)="close()">close</span>
+        </div>
+    </div>
+    <div *ngSwitchCase="'info'" class="notification-container info">
+        <div class="notification-message">
+            <span>{{data.title}}</span>
+            <p>{{data.text}} </p>
+        </div>
+        <div class="notification-close">
+            <span class="material-icons" (click)="close()">close</span>
+        </div>
+    </div>
+</div>

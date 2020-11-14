@@ -1,0 +1,38 @@
+body {
+    line-height: 1;
+    font-size: 0.875rem;
+    @include ptSansRegular();
+}
+
+main,
+body {
+    overflow: hidden;
+}
+
+p {
+    @include ptSansRegular();
+    font-size: 0.875rem;
+    line-height: 1.4;
+    letter-spacing: 0.07em;
+}
+
+i {
+    @include ptSansItalic();
+}
+
+b,
+strong {
+    @include ptSansBold();
+    i {
+        @include ptSansBoldItalic();
+    }
+}
+
+h1 {}
+
+h2 {
+    @include ptSansRegular();
+    line-height: 1.4;
+    color: $textColor;
+    font-size: 1.5rem;
+}

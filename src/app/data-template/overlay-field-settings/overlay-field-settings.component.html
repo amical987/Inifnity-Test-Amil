@@ -1,0 +1,93 @@
+<div class="right-sidebar quick-info show" *ngIf="fieldSettings && validationTypes">
+    <form novalidate [formGroup]="fieldSettings">
+        <div class="list-header">
+            <span>Property settings</span>
+            <a (click)="cancel()" class="close-sidebar"></a>
+        </div>
+        <div class="list-body">
+            <span class="subtitle">General</span>
+            <div class="form-group" [ngClass]="{'has-error': displayMessage['name'] }">
+                <div class="error-message">
+                    <strong>Error</strong>
+                    {{ displayMessage['name'] }}
+                </div>
+                <label for="nameSettings">Name*</label>
+                <input type="text" id="nameSettings" placeholder="Enter a name..." formControlName="name">
+            </div>
+
+            <app-textbox-lock [form]="fieldSettings" [editCodeName]="editCodeName" [layout]="'stack'" [isNew]="isNew"></app-textbox-lock>
+
+            <div class="form-group">
+                <label for="fieldCaption">Field Caption</label>
+                <input type="text" id="fieldCaption" formControlName="description">
+            </div>
+            <div class="form-group">
+                <label for="defaultValue">Default value</label>
+                <input type="text" id="defaultValue" formControlName="defaultValue">
+            </div>
+
+            <span class="subtitle">Validation</span>
+            <div class="form-group">
+                <label class="control custom-checkbox">Field is mandatory
+                    <input type="checkbox" />
+                    <div class="control-indicator"></div>
+                </label>
+            </div>
+
+            <div formArrayName="fieldValidations" class="form-validations-container">
+                <span class="subtitle">Validation Rules</span>
+                <div *ngFor="let validation of fieldSettings['controls'].fieldValidations['controls']; let validationIndex=index;let last=last;"
+                    [formGroupName]="validationIndex" class="validation-rule-item">
+                    <div class="view-mode" *ngIf="!validationEdit[validationIndex]">
+                        <ul>
+                            <li>
+                                {{ getValidationName(validation.get('validationId').value) }}
+                                <i class="material-icons" (click)="delete(validationIndex)">delete_forever</i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="edit-mode form-group-rules" *ngIf="validationEdit[validationIndex]">
+                        <div class="form-group">
+                            <label for="{{'ruleValidation'+ validationIndex}}">Rule:</label>
+                            <div class="select">
+                                <select id="{{'ruleValidation'+ validationIndex}}" formControlName="validationId">
+                                    <option *ngFor="let control of validationTypes; let i = index" [value]="control.id">
+                                        {{control.displayName}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" [ngClass]="{'has-error': displayMessage['value'] }">
+                            <div class="error-message">
+                                <strong>Error</strong>
+                                {{ displayMessage['value'] }}
+                            </div>
+                            <label for="{{'valueValidation'+ validationIndex}}">Value:</label>
+                            <input type="text" id="{{'valueValidation'+ validationIndex}}" formControlName="value">
+                        </div>
+                        <div class="form-group">
+                            <label for="{{'errorValidation'+ validationIndex}}">Error message:</label>
+                            <textarea type="text" formControlName="errorMessage"
+                                id="{{'errorValidation'+ validationIndex}}"></textarea>
+                        </div>
+                        <div class="btn-container">
+                            <button (click)="applyValidation(validationIndex)"
+                                class="primary-btn">Apply</button>
+                            <button class="primary-btn white-btn"
+                                (click)="cancelValidation(validationIndex)">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="primary-btn blue-border-btn" [disabled]="isValidationEdit" (click)="addNew()">Add validation
+                rule</button>
+        </div>
+
+        <div class="list-footer">
+            <div class="btn-container">
+                <button (click)="apply()" class="primary-btn">Apply</button>
+                <button (click)="cancel()" class="primary-btn white-btn">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,35 @@
+<div [ngSwitch]="layout" [formGroup]="form">
+    <div *ngSwitchCase="'stack'">
+        <div *ngIf="!isNew" class="form-group lock-container" [ngClass]="{'disabled': !editCodeName}">
+            <i class="lock-icon" (click)="editCodeName=!editCodeName"></i>
+            <label for="codeName">Code Name</label>
+            <input type="text" id="codeName" placeholder="(automatic)" formControlName="codeName" [value]="form.get('codeName')?.value | codeName">
+        </div>
+        <div *ngIf="isNew" class="form-group lock-container" [ngClass]="{'disabled': !editCodeName}">
+            <i class="lock-icon" (click)="editCodeName=!editCodeName"></i>
+            <label for="codeName">Code Name</label>
+            <input type="text" id="codeName" formControlName="codeName" placeholder="(automatic)"
+                [value]="form.get('name')?.value | codeName">
+        </div>
+    </div>
+    <div *ngSwitchDefault>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <label for="codeName">Code Name</label>
+                </div>
+                <div class="col-12 col-md-8">
+                   <div *ngIf="!isNew" class="form-group lock-container" [ngClass]="{'disabled': !editCodeName}">
+                        <i class="lock-icon" (click)="editCodeName=!editCodeName"></i>
+                        <input type="text" id="codeName" placeholder="(automatic)" formControlName="codeName" [value]="form.get('codeName')?.value | codeName">
+                    </div>
+                    <div *ngIf="isNew" class="form-group lock-container" [ngClass]="{'disabled': !editCodeName}">
+                        <i class="lock-icon" (click)="editCodeName=!editCodeName"></i>
+                        <input type="text" id="codeName" formControlName="codeName" placeholder="(automatic)"
+                            [value]="form.get('name')?.value | codeName">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

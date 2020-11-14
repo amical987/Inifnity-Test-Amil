@@ -1,0 +1,16 @@
+dl, dt, dd, table, caption, tbody, tfoot, thead, tr, th, td {
+    vertical-align: middle;
+}
+
+table {
+    &.mat-table {
+        width: 100%;
+
+        th {
+            &.mat-header-cell {
+                font-size: 15px !important;
+                font-weight: 600 !important;
+            }
+        }
+    }
+}

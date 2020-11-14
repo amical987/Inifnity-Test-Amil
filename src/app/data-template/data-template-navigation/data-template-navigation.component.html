@@ -1,0 +1,22 @@
+<div class="tab">
+    <a *ngIf="templateId" [routerLink]="['/data-template/design', templateId]" routerLinkActive="active-tab"
+        [routerLinkActiveOptions]="{ __change_detection_hack__: templateId }">
+        <label for="tab-1" class="tab-label">Design</label>
+    </a>
+    <label for="tab-1" *ngIf="!templateId" class="tab-label">Design</label>
+</div>
+<div class="tab" *ngIf="templateId">
+    <a [routerLink]="['/data-template/layout', templateId]" routerLinkActive="active-tab">
+        <label for="tab-2" class="tab-label">Layout</label>
+    </a>
+</div>
+<div class="tab" *ngIf="templateId">
+    <a [routerLink]="['/data-template/settings', templateId]" routerLinkActive="active-tab">
+        <label for="tab-3" class="tab-label">Settings</label>
+    </a>
+</div>
+<div class="tab" *ngIf="templateId">
+    <a [routerLink]="['/data-template/permissions', templateId]" routerLinkActive="active-tab">
+        <label for="tab-3" class="tab-label">Permissions</label>
+    </a>
+</div>

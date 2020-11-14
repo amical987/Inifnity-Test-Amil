@@ -1,0 +1,11 @@
+<div id="cms-new-content-container" *ngIf="insertMenu" >
+    <div class="content-inner-container">
+        <span class="title">Insert a new subitem</span>
+        <ul>
+            <li *ngFor="let item of insertMenu">
+                <span class="material-icons">content_copy</span> {{item.label}}
+                <!-- <button (click)="selectMenu(item)">{{item.label}}</button> -->
+            </li>
+        </ul>
+    </div>
+</div>

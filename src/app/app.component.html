@@ -1,0 +1,8 @@
+<router-outlet name="header"></router-outlet>
+<main class="wrapper" [ngClass]="{'remove-sidebar': isMenuOpened }">
+    <router-outlet name="sidebar"></router-outlet>
+    <div id="content">
+        <router-outlet></router-outlet>
+    </div>
+</main>
+<router-outlet name="footer"></router-outlet>

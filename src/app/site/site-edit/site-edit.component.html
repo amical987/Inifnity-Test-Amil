@@ -1,0 +1,66 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="save-edit-container">
+    <button class="save-btn" (click)="edit()">Save</button>
+</div>
+<div class="card" *ngIf="siteForm">
+    <div class="custom-tabs">
+        <div class="tab">
+            <input type="radio" name="css-tabs" checked class="tab-switch">
+            <label for="tab-1" class="tab-label"></label>
+            <div class="tab-content">
+                <div class="desing-intro-form-group">
+                    <form [formGroup]="siteForm">
+                        <div class="form-container">
+                            <div class="form-section">
+                                <div class="form-group inline-label"
+                                    [ngClass]="{' has-error': (siteForm.controls.displayName.errors?.required && (siteForm.controls.displayName.touched || !validForm))}">
+                                    <div class="error-message"
+                                        *ngIf="siteForm.controls.displayName.errors?.required && (siteForm.controls.displayName.touched || !validForm)">
+                                        <strong>Error</strong>
+                                        Name is required.
+                                    </div>
+                                    <label for="name">Name</label>
+                                    <input type="text" placeholder="Name" formControlName="displayName">
+                                </div>
+                                <div class="form-group inline-label" [ngClass]="{' has-error': siteForm.controls.description.errors?.required && 
+                                (siteForm.controls.description.touched || !validForm)}">
+                                    <div class="error-message"
+                                        *ngIf="siteForm.controls.description.errors?.required && (siteForm.controls.description.touched || !validForm)">
+                                        <strong>Error</strong>
+                                        Description is required.
+                                    </div>
+                                    <label for="description">Description</label>
+                                    <input type="text" placeholder="Description" formControlName="description">
+                                </div>
+                                <div class="form-group inline-label">
+                                    <label for="domainName">Domain name</label>
+                                    <input type="text" placeholder="Domain name" formControlName="domainName">
+                                </div>
+                                <div class="form-group inline-label">
+                                    <label class="control custom-checkbox">Status
+                                        <input type="checkbox" formControlName="status" />
+                                        <div class="control-indicator"></div>
+                                    </label>
+                                </div>
+                                <div class="form-group inline-label"
+                                    [ngClass]="{' has-error': siteForm.controls.localeIds.errors?.required && (siteForm.controls.localeIds.touched || !validForm)}">
+                                    <div class="error-message"
+                                        *ngIf="siteForm.controls.localeIds.errors?.required && (siteForm.controls.localeIds.touched || !validForm)">
+                                        <strong>Error</strong>
+                                        You have to chose one locale for site
+                                    </div>
+                                    <label>Chose locale for site</label>
+                                    <mat-selection-list formControlName="localeIds">
+                                        <mat-list-option *ngFor="let locale of locales" [value]="locale.id">
+                                            <span> {{locale.language}} </span>
+                                        </mat-list-option>
+                                    </mat-selection-list>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

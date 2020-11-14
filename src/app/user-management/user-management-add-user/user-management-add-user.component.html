@@ -1,0 +1,57 @@
+<div id="user-management-add-user">
+    <h2 mat-dialog-title>Create a new user account</h2>
+    <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()" novalidate>
+        <mat-dialog-content>
+            <h3>Please enter a valid user details</h3>
+
+            <div class="row mt-2">
+                <div class="col-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>First Name</mat-label>
+                        <input [(ngModel)]="user.firstName" matInput formControlName="firstNameFormControl" placeholder="Please enter first name">
+                        <mat-error *ngIf="addUserForm.get('firstNameFormControl').hasError('maxLength')">
+                            The first name should be max 150 characters.
+                        </mat-error>
+                        <mat-error *ngIf="addUserForm.get('firstNameFormControl').hasError('required')">
+                            The first name is <strong>required</strong>
+                        </mat-error>
+                        <mat-icon matSuffix>done</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Last Name</mat-label>
+                        <input [(ngModel)]="user.lastName" matInput formControlName="lastNameFormControl" placeholder="Please enter last name">
+                        <mat-error *ngIf="addUserForm.get('lastNameFormControl').hasError('maxLength')">
+                            The last name should be max 150 characters.
+                        </mat-error>
+                        <mat-error *ngIf="addUserForm.get('lastNameFormControl').hasError('required')">
+                            The last name is <strong>required</strong>
+                        </mat-error>
+                        <mat-icon matSuffix>done</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="row mt-1">
+                <div class="col-12">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Email</mat-label>
+                        <input [(ngModel)]="user.username" matInput formControlName="emailFormControl" placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="addUserForm.get('emailFormControl').hasError('email') && !addUserForm.get('emailFormControl').hasError('required')">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="addUserForm.get('emailFormControl').hasError('required')">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button type="submit" mat-button cdkFocusInitial>Save</button>
+        </mat-dialog-actions>
+    </form>
+</div>

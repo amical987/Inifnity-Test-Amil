@@ -1,0 +1,17 @@
+<div id="user-management-edit-user-header" class="flex-column flex-lg-row d-flex p-4">
+    <div class="d-flex flex-1 flex-row flex-grow-1">
+        <div>
+            <span class="font-size-35 d-flex mb-2">
+                <strong class="mr-2 title">{{user.firstName}} {{user.lastName}}</strong>
+            </span>
+            <span class="font-size-12 d-flex justify-content-between">
+                <a class="mr-1">{{user.username}}</a> |
+                <user-status class="ml-1" [user]="user"></user-status>
+            </span>
+        </div>
+    </div>
+    <div [showOnlyForPermissions]="[permissions.DeleteUser]">
+        <app-user-management-delete-user (onSuccessDeleted)="onSuccessDeleted($event)" [user]="user">
+        </app-user-management-delete-user>
+    </div>
+</div>

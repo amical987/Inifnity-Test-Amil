@@ -1,0 +1,52 @@
+<div class="section-title">
+    <i class="icon-placeholders"></i>
+    <span>Content Editor</span>
+</div>
+<div class="save-edit-container ribbons-container">
+    <div class="custom-tabs">
+        <div class="tab">
+            <input type="radio" name="menu-tabs" id="ribbons-tab-1" checked class="tab-switch">
+            <label for="ribbons-tab-1" class="tab-label">Home</label>
+            <div class="tab-content">
+
+                <div class="save-edit-container" *ngIf="!isEdit" >
+                    <button type="button" (click)="new()" class="save-btn">Save</button>
+                    <button type="button" (click)="newWithAnother()" class="edit-btn">Save and create another</button>
+                </div>
+                <div class="save-edit-container" *ngIf="isEdit">
+                    <button class="add-btn" type="menu" cdkOverlayOrigin #insertOrigin="cdkOverlayOrigin" (click)="insertPanel()">Add</button>
+                    <button class="save-btn" (click)="update()">Save</button>
+                    <button class="edit-btn add-border">Edit</button>
+                    <button (click)="duplicate()" class="duplicate-btn">Duplicate</button>
+                    <button (click)="copy()" class="copy-btn">Copy to</button>
+                    <button (click)="move()" class="move-btn">Move to</button>
+                    <button (click)="delete()" class="delete-btn add-border">Delete</button>
+                    <!-- Up, Down, First, Last -->
+                </div>
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" name="menu-tabs" id="ribbons-tab-2" class="tab-switch">
+            <label for="ribbons-tab-2" class="tab-label">Verions</label>
+            <div class="tab-content">
+                2
+            </div>
+        </div>
+        <div class="tab">
+            <input type="radio" name="menu-tabs" id="ribbons-tab-3" class="tab-switch">
+            <label for="ribbons-tab-3" class="tab-label">Publish</label>
+            <div class="tab-content">
+                3
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <div class="save-edit-container" *ngIf="content">
+    <div *ngFor="let command of content.workflowCommands" >
+        <button (click)="selectWorkflowCommand(command)">{{command.name}}</button>
+    </div>
+</div> -->

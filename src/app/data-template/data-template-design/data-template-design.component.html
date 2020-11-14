@@ -1,0 +1,26 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="section-title">
+    <i class="icon-templates"></i>
+    <span>Design</span>
+</div>
+<div class="save-edit-container" *ngIf="isEdit && !reorderFields">
+    <button class="add-btn " (click)="new()">New</button>
+    <button class="save-btn" (click)="save()">Save</button>
+    <button class="reoder-btn"  (click)="reorder()">Reorder</button>
+    <button class="delete-btn " (click)="delete()">Delete</button>
+</div>
+<div class="save-edit-container" *ngIf="!isEdit">
+    <button class="save-btn" (click)="save()">Save</button>
+</div>
+<div class="save-edit-container" *ngIf="reorderFields">
+    <button class="reoder-btn" (click)="reorderDone()">I am done reordering</button>
+</div>
+<div class="card">
+    <div class="custom-tabs second-tabs">
+        <app-data-template-navigation></app-data-template-navigation>
+        <div class="tab-content">
+            <app-design-template-form>
+            </app-design-template-form>
+        </div>
+    </div>
+</div>

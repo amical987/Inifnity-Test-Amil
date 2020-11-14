@@ -1,0 +1,30 @@
+.textbox-lock {
+    position: relative;
+        input {
+            padding: 7px 15px 7px 44px;
+        }
+        &.disabled {
+            input {
+                pointer-events: none;
+            }
+            i {
+                &:before {
+                    content: "lock_outline";
+                }
+            }
+        }
+        i {
+            cursor: pointer;
+            &:before {
+                content: "lock_open";
+                font-family: "Material Icons";
+                display: block;
+                position: absolute;
+                left: 15px;
+                bottom: 7px;
+                font-size: 1.2rem;
+                z-index: 9;
+                font-style: normal;
+            }
+        }
+    }

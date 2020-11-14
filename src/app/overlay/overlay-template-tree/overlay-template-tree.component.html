@@ -1,0 +1,7 @@
+<div style="background-color: white;width: 500px;height: 500px;">
+    <app-tree-list #tree [stopEmitGlobalEvent]="false"  [treeApiName]="treeApiName" (onSelect)="onSelect($event)">
+    </app-tree-list>
+
+    <button type="submit" class="save-btn" (click)="selectNode()">Select</button>
+    <button type="button" class="save-btn" (click)="cancel()">Cancel</button>
+</div>

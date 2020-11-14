@@ -1,0 +1,114 @@
+<app-breadcrumb></app-breadcrumb>
+<div class="section-title">
+    <i class="icon-templates"></i>
+    <span>Settings</span>
+</div>
+<div class="save-edit-container">
+    <button class="save-btn" (click)="save()">Save</button>
+</div>
+<div class="card">
+    <div class="custom-tabs second-tabs">
+        <app-data-template-navigation></app-data-template-navigation>
+        <div class="tab">
+            <div class="tab-content" >
+                <app-error-panel></app-error-panel>
+                <div class="form-container" [busyIndicator]="busyIndicator.isBusy" [overlay]="true">
+                    <mat-accordion multi>
+                        <mat-expansion-panel expanded >
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Quick Info
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                                <div class="row" *ngIf="settingsForm">
+                                    <div class="col-12 col-md-12 col-lg-9 col-xl-7">
+                                        <form novalidate [formGroup]="settingsForm">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-4">
+                                                        <label>ID</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-8">
+                                                        <label type="text" class="templateIdLabel">{{currentTemplate.id}}</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" [ngClass]="{'has-error': validation.displayMessage['name'] }">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-4">
+                                                        <label for="name">Name*</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-8">
+                                                        <div class="error-message">
+                                                            <strong>Error</strong>
+                                                            {{ validation.displayMessage['name'] }}
+                                                        </div>
+                                                        <input type="text" id="name" formControlName="name" placeholder="Enter a name...">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <app-textbox-lock [form]="settingsForm" [editCodeName]="editCodeName" [isNew]="false"></app-textbox-lock>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-4">
+                                                        <label for="description">Description</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-8">
+                                                        <textarea name="description" formControlName="description" id="description" cols="30" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Help
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                                <div class="row">
+                                    <div class="col-12 col-md-12 col-lg-9 col-xl-7" *ngIf="settingsForm">
+                                        <form novalidate [formGroup]="settingsForm">
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-4">
+                                                        <label for="helpDescription">Help Description</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-8">
+                                                        <input type="text" id="helpDescription" formControlName="helpDescription">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-12 col-md-4">
+                                                        <label for="helpLongDescription">Help Long Description</label>
+                                                    </div>
+                                                    <div class="col-12 col-md-8">
+                                                        <textarea name="baseInfo" formControlName="helpLongDescription" id="helpLongDescription" cols="30" rows="3"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Base template
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="form-group inline-label">
+                                <app-multiple-tree-list treeApiName="templates"></app-multiple-tree-list>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

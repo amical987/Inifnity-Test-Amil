@@ -1,0 +1,59 @@
+@import '~angular-tree-component/dist/angular-tree-component.css';
+.angular-tree-component{
+    cursor: default;
+    .tree-node-leaf{
+        margin-left: 6px;
+    }
+    .node-wrapper{
+        display: inline-block;
+        align-items: center;
+        .toggle-children-wrapper{
+            cursor: pointer;
+            .toggle-children{
+                background: none;
+                width: auto;
+                height: auto;
+                transition: transform .3s;
+                &:before{
+                    height: auto;
+                    width: auto;
+                    background-size: contain;
+                    display: inline-block;
+                    position: relative;
+                    top: 1px;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    content: "play_arrow";
+                    font-family: "Material Icons";
+                    font-size: 0.75rem;
+                }
+            }
+        }
+        .node-content-wrapper{
+            padding: 5px;
+            padding-left: 2px;
+            cursor: pointer;
+            span{
+                font-size: 0.75rem;
+            }
+        }
+    }
+    .tree-node-loading{
+        display: block;
+        margin-top: 5px;
+        span{
+            margin: 0 10px;
+            font-size: 0.75rem;
+        }
+    }
+}
+.tree-list-wrapper-full-height{
+    background-color: white;
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    min-height: calc(100vh - 60px);
+}

@@ -1,0 +1,19 @@
+
+.delete-button {
+    margin-top: 10px;
+    text-align: right;
+}
+
+table {
+    margin: 20px;
+    width: 90%;
+  }
+
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+
+  td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+    padding-left: 24px;
+    padding-top: 18px;
+}

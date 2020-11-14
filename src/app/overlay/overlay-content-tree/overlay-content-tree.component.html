@@ -1,0 +1,22 @@
+<div class="right-sidebar quick-info show" *ngIf="treeListOverlay" >
+    <div class="list-header">
+        <span>{{treeListOverlay.title}}</span>
+        <a (click)="cancel()" class="close-sidebar"></a>
+    </div>
+    <div class="list-body">
+        <p>{{treeListOverlay.text}}</p>
+        <div class="angular-tree-component">
+
+            <app-tree-list #tree [stopEmitGlobalEvent]="false" [treeApiName]="treeListOverlay.apiName"
+                (onSelect)="onSelect($event)">
+            </app-tree-list>
+        </div>
+    </div>
+
+    <div class="list-footer">
+        <div class="btn-container">
+            <button (click)="selectNode()" class="primary-btn">Apply</button>
+            <button (click)="cancel()" class="primary-btn white-btn">Cancel</button>
+        </div>
+    </div>
+</div>

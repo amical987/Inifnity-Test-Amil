@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="custom-tabs">
+        <div class="tab">
+            <input type="radio" name="css-tabs" checked class="tab-switch">
+            <label for="tab-1" class="tab-label"></label>
+            <div class="tab-content">
+                <div class="responsive" *ngFor="let media of showMedia">
+                    <div class="container">
+                        <div class="gallery">
+                            <img [src]="media.safeUrl" [alt]="media.alt" width="600" height="400">
+                            <div class="desc">{{media.description}}</div>
+                        </div>
+                        <div class="overlay">
+                            <span class="material-icons" (click)="downloadFile(media, true)">
+                                arrow_drop_down
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

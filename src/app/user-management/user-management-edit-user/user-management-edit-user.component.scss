@@ -1,0 +1,40 @@
+
+#user-management-edit-user {
+    background-color: #fff !important;
+    border: 1px solid grey;
+
+    hr {
+        &.spliter {
+            height: 0;
+            border: 0;
+            border-top: 1px solid grey;
+        }
+    }
+
+    .mat-form-field {
+        width: 100% !important;
+        color: black;
+    }
+
+    .form-section {
+
+        .primary-title {
+            color: grey;
+            font-weight: 600;
+        }
+
+        .secondary-title {
+            line-height: 20px;
+        }
+
+        form {
+            position: relative;
+
+            .action-buttons {
+                position: absolute;
+                right: 0;
+                top: -50px;
+            }
+        }
+    }
+}

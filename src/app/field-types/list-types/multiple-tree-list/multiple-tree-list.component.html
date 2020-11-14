@@ -1,0 +1,36 @@
+<div class="col-12">
+    <div class="multiple-tree-list-container">
+        <div class="left-part">
+            <div class="intro">
+                <span>All</span>
+                <p>Select items below to display in your grid.</p>
+            </div>
+            <app-tree-list #tree (onDoubleClick)="moveToListDoubleClick($event)" [stopEmitGlobalEvent]="false"
+            [treeApiName]="treeApiName"></app-tree-list>
+        </div>
+        <div class="icon-part">
+            <span class="material-icons" (click)="removeFromList()">chevron_left</span>
+            <span class="material-icons" (click)="moveToList()">chevron_right</span>
+        </div>
+        <div class="right-part" *ngIf="formTreeList">
+            <div class="intro">
+                <span>Selected</span>
+                <p>Drag the column names below to reorder how theywill appear above your grid.</p>
+            </div>
+            <form novalidate [formGroup]="formTreeList">
+                <div class="form-group" *ngFor="let node of formTreeList.controls.nodes.controls; let i = index">
+                    <label formArrayName="nodes" class="control custom-checkbox">{{selectedNodes[i].name}}
+                        <input type="checkbox" [formControlName]="i" />
+                        <div class="control-indicator"></div>
+                    </label>
+                </div>
+            </form>
+            <!-- <ul>
+                <li>Section</li>
+                <li>Home</li>
+                <li>Section</li>
+                <li>News</li>
+            </ul> -->
+        </div>
+    </div>
+</div>

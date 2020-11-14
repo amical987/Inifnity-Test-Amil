@@ -1,0 +1,184 @@
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+    color: $white;
+    display: inline-block;
+    text-decoration: inherit;
+    text-align: center;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 1rem;
+    line-height: 1;
+    position: relative;
+    top: 1px;
+}
+
+.icon-dashboard {
+    &:before {
+        content: '\e80c';
+        font-size: 0.75rem;
+        top: 0px;
+    }
+}
+
+.icon-developer {
+    &:before {
+        content: '\e806';
+    }
+}
+
+.icon-media-manager {
+    &:before {
+        content: '\e810';
+    }
+}
+
+.icon-marketing-manager {
+    &:before {
+        content: '\e80f';
+    }
+}
+
+.icon-analytics {
+    &:before {
+        content: '\e800';
+    }
+}
+
+.icon-user-manager {
+    &:before {
+        content: '\e816';
+    }
+}
+
+.icon-settings {
+    &:before {
+        content: '\e80c';
+    }
+}
+
+.icon-widgets {
+    &:before {
+        content: '\e803';
+    }
+}
+
+.icon-placeholders {
+    &:before {
+        content: '\e801';
+    }
+}
+
+.icon-templates {
+    &:before {
+        content: '\e80d';
+    }
+}
+
+.icon-dictionary {
+    &:before {
+        content: '\e802';
+    }
+}
+
+.icon-save {
+    &:before {
+        content: '\e812';
+    }
+}
+
+.icon-edit {
+    &:before {
+        content: '\e808';
+    }
+}
+
+.icon-design {
+    &:before {
+        content: '\e805';
+    }
+}
+
+.icon-layout {
+    &:before {
+        content: '\e80e';
+    }
+}
+
+.icon-search {
+    &:before {
+        content: '\e80b';
+    }
+}
+
+.icon-bell {
+    &:before {
+        content: '\e808';
+    }
+}
+
+.icon-home {
+    &:before {
+        content: '\e804';
+    }
+}
+
+.icon-docked {
+    &:before {
+        content: '\e809';
+    }
+}
+
+.icon-flyout {
+    &:before {
+        content: '\e80a';
+    }
+}
+
+.icon-close-sidebar {
+    &:before {
+        content: '\e802';
+    }
+}
+
+.icon-content-editor {
+    &:before {
+        content: '\e801';
+    }
+}
+
+.icon-media-library {
+    &:before {
+        content: '\e807';
+    }
+}
+
+.icon-online-marketing {
+    &:before {
+        content: '\e806';
+    }
+}
+
+.icon-development {
+    &:before {
+        content: '\e810';
+    }
+}
+
+.icon-user-manager {
+    &:before {
+        content: '\e80e';
+    }
+}
+
+.icon-doublearrow {
+    &:before {
+        content: '\e815';
+    }
+}

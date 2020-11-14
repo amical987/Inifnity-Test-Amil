@@ -1,0 +1,17 @@
+<div class="section-title with-no-action-buttons">
+    <span>Edit User</span>
+</div>
+
+<div id="user-management-edit-user" class="mt-2" *ngIf="user" [busyIndicator]="isBusy" [overlay]="true">
+    <div class="card-body p-0">
+        <app-user-management-edit-user-header [user]="user"></app-user-management-edit-user-header>
+        <hr class="spliter">
+        <app-user-management-edit-user-basic-information (onSaved)="onChanged()" [user]="user"></app-user-management-edit-user-basic-information>
+        <hr class="spliter">
+        <app-user-management-edit-user-status (onSaved)="onChanged()" [user]="user"></app-user-management-edit-user-status>
+        <hr class="spliter">
+        <div class="pt-2 pb-4 pr-4 pl-4">
+            <a [routerLink]="['../']">Back</a>
+        </div>
+    </div>
+</div>

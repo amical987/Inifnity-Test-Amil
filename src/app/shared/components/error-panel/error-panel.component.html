@@ -1,0 +1,13 @@
+<div class="error-container" *ngIf="serverErrors">
+    <div class="error-inner-container">
+        <div class="error-icon"></div>
+        <div class="error-msg">
+            <span>There are some errors, please correct them below.</span>
+            <ul>
+                <li *ngFor="let errorDetails of serverErrors.error.errors.Message;">
+                    {{ errorDetails }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

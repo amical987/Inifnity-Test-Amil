@@ -1,0 +1,23 @@
+<div [formGroup]="customFormName" class="form-group">
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <label [attr.for]="control.key">{{control.label}}</label>
+        </div>
+
+        <div [ngSwitch]="control.controlType" class="col-12 col-md-8">
+
+            <input *ngSwitchCase="'textbox'" [ngClass]="{'is-invalid': validationMessage[control.key] }"
+                [formControlName]="control.key" [id]="control.key" [type]="control.type">
+
+            <textarea *ngSwitchCase="'textarea'" [formControlName]="control.key" [id]="control.key"></textarea>
+
+            <select [id]="control.key" *ngSwitchCase="'dropdown'" [formControlName]="control.key">
+                <option *ngFor="let opt of control.options" [value]="opt.key">{{opt.value}}</option>
+            </select>
+
+        </div>
+        <span class="invalid-feedback">
+            {{validationMessage[control.key] }}
+        </span>
+    </div>
+</div>

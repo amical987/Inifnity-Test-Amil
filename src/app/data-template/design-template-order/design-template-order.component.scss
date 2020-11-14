@@ -1,0 +1,54 @@
+.design-template-list {
+    max-width: 100%;
+    min-height: 60px;
+    display: block;
+    background: white;
+    border-radius: 2px;
+    overflow: hidden;
+    &.cdk-drop-list-dragging {
+        .section-item-field {
+            &:not(.cdk-drag-placeholder) {
+                transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+            }
+        }
+    }
+}
+.section-item-field {
+    padding: 10px 10px;
+    border: solid 1px #d9e2ec;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    cursor: move;
+    background-color: #f8f8f9;
+    font-size: 14px;
+    margin-bottom: 4px;
+    span {
+        color: rgba(0, 0, 0, 0.6);
+        .open_with {
+            &:before {
+                content: "open_with";
+                font-family: "Material Icons";
+                font-size: 1.15rem;
+                line-height: 1;
+                display: inline-block;
+                margin-right: 8px;
+                vertical-align: middle;
+                color: #0582ca;
+                font-style: normal;
+            }
+        }
+    }
+}
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.section-item-custom-placeholder {
+    background: #ccc;
+    border: dotted 2px #999;
+    min-height: 40px;
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

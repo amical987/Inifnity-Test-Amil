@@ -1,0 +1,26 @@
+.node-icon{
+    i{
+        margin-right: 8px;
+        &::before{
+            font-size: 0.9rem;
+        }
+    }
+}
+.linear-list-pages{
+    button{
+        background-color: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        .mat-icon{
+            margin-right: 8px;
+            font-size: 1.20rem;
+            line-height: 1.6rem;
+        }
+        span{
+            margin-bottom: 0;
+            font-size: 0.75rem;
+            font-family: 'PT Sans', sans-serif;
+        }
+    }
+}

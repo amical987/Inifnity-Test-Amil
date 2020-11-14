@@ -1,0 +1,14 @@
+@import '../abstracts/variables';
+
+@mixin themify() {
+    @each $theme, $map in $themes {
+      $theme-map: map-get($themes, $theme) !global;
+      .theme-#{$theme} & {
+        @content;
+      }
+    }
+  }
+  
+@function themed($key) {
+    @return map-get($theme-map, $key);
+}

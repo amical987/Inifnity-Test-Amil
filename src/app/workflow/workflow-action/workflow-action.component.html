@@ -1,0 +1,103 @@
+<div class="section-title">
+    <i class="icon-placeholders"></i>
+    <span>Actions</span>
+</div>
+<div class="save-edit-container">
+    <button class="save-btn" (click)="showActionForm()">New Action</button>
+</div>
+<div class="card">
+    <div class="custom-tabs second-tabs">
+        <app-workflow-navigation></app-workflow-navigation>
+        <div class="tab-content">
+            <div class="tab-inner-container">
+                <table mat-table [dataSource]="workflowAction" matSort class="mat-elevation-z8">
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <!-- Display Name Column -->
+                    <ng-container matColumnDef="displayName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Display Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.displayName}} </td>
+                    </ng-container>
+
+                    <!-- Assembly Type Column -->
+                    <ng-container matColumnDef="assemblyType">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Assembly Type </th>
+                        <td mat-cell *matCellDef="let element"> {{element.assemblyType}} </td>
+                    </ng-container>
+
+                    <!-- Icon Class Column -->
+                    <ng-container matColumnDef="iconClass">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Icon</th>
+                        <td mat-cell *matCellDef="let element"> {{element.iconClass}} </td>
+                    </ng-container>
+
+                    <!-- Enabled Column -->
+                    <ng-container matColumnDef="enabled">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Enabled </th>
+                        <td mat-cell *matCellDef="let element"> {{element.enabled}} </td>
+                    </ng-container>
+
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef></th>
+                        <td mat-cell *matCellDef="let element" class="action-link">
+                            <a (click)="edit(element)">Edit</a> |
+                            <a (click)="delete(element)">Delete</a>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="right-sidebar quick-info" [ngClass]="{'show': showOverlay}">
+    <div class="list-body">
+        <div class="form-container" *ngIf="actionForm">
+            <div class="form-section" [formGroup]="actionForm">
+                <span>General</span>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['name'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['name'] }}
+                    </div>
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" formControlName="name">
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['displayName'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['displayName'] }}
+                    </div>
+                    <label for="displayName">Display Name*</label>
+                    <input type="text" id="displayName" formControlName="displayName">
+                </div>
+                <div class="form-group">
+                    <label for="assemblyType">Assembly Type</label>
+                    <input type="text" id="assemblyType" formControlName="assemblyType">
+                </div>
+                <div class="form-group">
+                    <label for="iconClass">Icon</label>
+                    <input type="text" id="iconClass" formControlName="iconClass">
+                </div>
+                <div class="form-group">
+                    <label class="control custom-checkbox">Enabled
+                        <input type="checkbox" formControlName="enabled" />
+                        <div class="control-indicator"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="btn-container">
+            <button (click)="addAction()" class="primary-btn close-sidebar">Apply</button>
+            <button (click)="showOverlay=!showOverlay" class="primary-btn close-sidebar">Cancel</button>
+        </div>
+    </div>
+</div>

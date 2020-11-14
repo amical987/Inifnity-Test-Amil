@@ -1,0 +1,19 @@
+<div class="design-content design-template-list" cdkDropList [cdkDropListData]="sections"
+    (cdkDropListDropped)="dropGroup($event)">
+    <div class="section-item-container insert-item-container" cdkDropListGroup
+        *ngFor="let section of sections['controls']; index as index" cdkDrag [cdkDragData]="section">
+        <span class="title" cdkDragHandle>{{section.get('name').value}}</span>
+        <div class="insert-input-container" [formGroup]="section">
+            <input type="number" placeholder="0" formControlName="order">
+        </div>
+        <div cdkDropList class="design-template-list section-item" cdkDropList
+            [cdkDropListData]="section['controls'].fields['controls']" (cdkDropListDropped)="dropItem($event)">
+            <div *ngFor="let field of section['controls'].fields['controls']; let islastField=last;">
+                <div class="section-item-field" *ngIf="!islastField" cdkDrag [cdkDragData]="field">
+                    <div class="section-item-custom-placeholder" *cdkDragPlaceholder></div>
+                    <span><i class="open_with"></i> {{field.get('name').value}} </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

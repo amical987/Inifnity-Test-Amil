@@ -1,0 +1,38 @@
+.primary-btn {
+    @include ptSansRegular();
+    font-size: 0.75rem;
+    line-height: 1;
+    padding: 7.5px 16px 9.5px 16px;
+    border-radius: 0;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    z-index: 9;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    border: 1px solid $skyeBlue;
+    font-family: "PT Sans";
+    letter-spacing: 0.03em;
+    &.disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+    [disabled] {
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+}
+
+.btn-container {
+    font-size: 0;
+    .primary-btn {
+        display: inline-block;
+        margin-right: 22px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

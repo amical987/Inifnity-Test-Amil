@@ -1,0 +1,91 @@
+<div class="section-title">
+    <i class="icon-placeholders"></i>
+    <span>Cultures</span>
+</div>
+<div class="save-edit-container">
+    <button class="save-btn" (click)="showCultureForm()">New Culture</button>
+</div>
+<div class="card">
+    <div class="custom-tabs second-tabs">
+        <div class="tab-content">
+            <div class="tab-inner-container">
+                <table mat-table [dataSource]="culture" matSort class="mat-elevation-z8">
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                    </ng-container>
+
+                    <!-- Short Name Column -->
+                    <ng-container matColumnDef="shortName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Short Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.shortName}} </td>
+                    </ng-container>
+
+                    <!-- Code Column -->
+                    <ng-container matColumnDef="code">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Code </th>
+                        <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+                    </ng-container>
+
+                    <!-- Icon Class Column -->
+                    <ng-container matColumnDef="dictionary">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Dictionary</th>
+                        <td mat-cell *matCellDef="let element"> {{element.dictionary}} </td>
+                    </ng-container>
+
+                    <!-- Action Column -->
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                        <td mat-cell *matCellDef="let element" class="action-link">
+                            <a (click)="edit(element)">Edit</a> |
+                            <a (click)="delete(element)">Delete</a>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="right-sidebar quick-info" [ngClass]="{'show': showOverlay}">
+    <div class="list-body">
+        <div class="form-container" *ngIf="cultureForm">
+            <div class="form-section" [formGroup]="cultureForm">
+                <span>General</span>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['name'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['name'] }}
+                    </div>
+                    <label for="name">Name*</label>
+                    <input type="text" id="name" formControlName="name">
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['shortName'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['shortName'] }}
+                    </div>
+                    <label for="shortName">Short Name*</label>
+                    <input type="text" id="shortName" formControlName="shortName">
+                </div>
+                <div class="form-group">
+                    <label for="code">Code</label>
+                    <input type="text" id="code" formControlName="code">
+                </div>
+                <div class="form-group">
+                    <label for="dictionary">Dictionary</label>
+                    <input type="text" id="dictionary" formControlName="dictionary">
+                </div>
+            </div>
+        </div>
+        <div class="btn-container">
+            <button (click)="addCulture()" class="primary-btn close-sidebar">Apply</button>
+            <button (click)="showOverlay=!showOverlay" class="primary-btn close-sidebar">Cancel</button>
+        </div>
+    </div>
+</div>
+

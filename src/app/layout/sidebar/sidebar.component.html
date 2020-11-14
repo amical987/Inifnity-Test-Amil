@@ -1,0 +1,30 @@
+<div id="sidebar">
+    <div class="hide-sidebar" (click)="showSidebarIcons()">
+        <i></i>
+    </div>
+    <ul *ngFor="let item of sidebarList">
+        <li *ngIf="item">
+            <a [routerLink]=[item.link]>
+                <i [class]="item.class"></i>
+                <span>{{item.name}}</span>
+            </a>
+            <ul *ngIf="item.submenu" class="submenu">
+
+                <!-- TO DO: za diskusiju
+                    <div class="hide-submenu">
+                    <i></i>
+                </div>
+                <span class="title">
+                    <i class="custom-icon icon-code"></i>
+                    Widgets
+                </span> -->
+                <li *ngFor="let subside of item.submenu">
+                    <a [href]="subside.link">
+                        <i *ngIf="subside.class" [class]="subside.class"></i>
+                        {{subside.name}}
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

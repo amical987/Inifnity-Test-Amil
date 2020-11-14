@@ -1,0 +1,192 @@
+<div class="section-title">
+    <i class="icon-placeholders"></i>
+    <span>Section Titl1e</span>
+</div>
+<div class="save-edit-container">
+    <!-- <button class="save-btn">Save</button> -->
+    <button class="save-btn" (click)="updateSteps()">Update</button>
+</div>
+<div class="card">
+    <div class="custom-tabs second-tabs">
+        <app-workflow-edit-navigation></app-workflow-edit-navigation>
+        <div class="tab-content">
+            <div class="tab-inner-container">
+                <div class="workflow-container">
+                    <div class="workflow-steps" cdkDropList [cdkDropListData]="workflowStep.steps"
+                        (cdkDropListDropped)="dropGroup($event)">
+                        <div class="row" cdkDropListGroup *ngFor="let stepItem of workflowStep.steps;let stepIndex=index" cdkDrag
+                            [cdkDragData]="stepItem">
+                            <div class="step-wrapper" (click)="selectStep(stepItem)">
+                                <i class="fa fa-user-circle"></i>
+                                <span>{{ stepItem.displayName}}</span>
+                                <button class="btn-link" (click)="deleteStep(stepIndex)">Delete</button>
+                            </div>
+                            <div class="state-wrapper" cdkDropList [cdkDropListData]="stepItem.commands"
+                                (cdkDropListDropped)="dropItem($event)">
+                                <div *ngFor="let command of stepItem.commands;let commandIndex=index">
+                                    <div cdkDrag [cdkDragData]="command" (click)="selectCommand(command)">
+                                        <i class="fa fa-user-circle"></i>
+                                        <span>{{command.displayName}}</span>
+                                        <button class="btn-link" (click)="deleteCommand(stepItem, commandIndex)">Delete</button>
+                                        <div (click)="selectAction(action)" class="action-wrapper"
+                                            *ngFor="let action of command.actions;let actionIndex=index">
+                                            <i class="fa fa-user-circle"></i>
+                                            <span>{{getActionName(action.id)}}</span>
+                                            <button class="btn-link"  (click)="deleteAction(command, actionIndex)">Delete</button>
+                                        </div>
+                                        <div class="col-md-12 btn-wrapper">
+                                            <button class="btn-link" (click)="showActionForm(command)">Create new
+                                                action</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 btn-wrapper">
+                                <button class="btn-link" (click)="showCommandForm(stepItem)">Create new command</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-default" (click)="showStepForm()">Create State</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="right-sidebar quick-info" [ngClass]="{'show': showStepOverlay}">
+    <div class="list-body">
+        <div class="form-container" *ngIf="stepForm">
+            <div class="form-section" [formGroup]="stepForm">
+                <span>General</span>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['name'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['name'] }}
+                    </div>
+                    <label for="stepName">Name*</label>
+                    <input type="text" id="stepName" formControlName="name">
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['displayName'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['displayName'] }}
+                    </div>
+                    <label for="stepDisplayName">Display Name</label>
+                    <input type="text" id="stepDisplayName" formControlName="displayName">
+                </div>
+                <div class="form-group">
+                    <label for="stepIcon">Icon</label>
+                    <input type="text" id="stepIcon" formControlName="iconClass">
+                </div>
+            </div>
+        </div>
+        <div class="btn-container">
+            <button (click)="addStep()" class="primary-btn close-sidebar">Apply</button>
+            <button (click)="showStepOverlay=false" class="primary-btn close-sidebar">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="right-sidebar quick-info" [ngClass]="{'show': showCommandOverlay}">
+    <div class="list-body">
+        <div class="form-container" *ngIf="commandForm">
+            <div class="form-section" [formGroup]="commandForm">
+                <span>General</span>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['name'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['name'] }}
+                    </div>
+                    <label for="commandName">Name</label>
+                    <input type="text" id="commandName" formControlName="name">
+                </div>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['displayName'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['displayName'] }}
+                    </div>
+                    <label for="commandDisplayName">Display Name</label>
+                    <input type="text" id="commandDisplayName" formControlName="displayName">
+                </div>
+                <div class="form-group">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        Error text
+                    </div>
+                    <label for="ruleValidation">Next Step</label>
+                    <div class="select">
+                        <select id="ruleValidation" formControlName="nextStepId">
+                            <option></option>
+                            <option *ngFor="let step of workflowStep.steps; let i = index" [value]="step.id">
+                                {{step.displayName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="commandIcon">Icon</label>
+                    <input type="text" id="commandIcon" formControlName="iconClass">
+                </div>
+                <div class="form-group">
+                    <label class="control custom-checkbox">Suppress Comment
+                        <input type="checkbox" formControlName="suppressComment" />
+                        <div class="control-indicator"></div>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="btn-container">
+            <button (click)="addCommand()" class="primary-btn close-sidebar">Apply</button>
+            <button (click)="showCommandOverlay=false" class="primary-btn close-sidebar">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div class="right-sidebar quick-info" [ngClass]="{'show': showActionOverlay}">
+    <div class="list-body">
+        <div class="form-container" *ngIf="actionForm">
+            <div class="form-section" [formGroup]="actionForm">
+                <span>General</span>
+                <div class="form-group" [ngClass]="{'has-error': displayMessage['id'] }">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        {{ displayMessage['id'] }}
+                    </div>
+                    <label for="actionId">Action</label>
+                    <div class="select">
+                        <select id="actionId" formControlName="id">
+                            <option></option>
+                            <option *ngFor="let workflowAction of workflowActions; let i = index"
+                                [value]="workflowAction.id">
+                                {{workflowAction.displayName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="error-message">
+                        <strong>Error</strong>
+                        Error text
+                    </div>
+                    <label for="actionNextStep">Next Step</label>
+                    <div class="select">
+                        <select id="actionNextStep" formControlName="nextStepId">
+                            <option></option>
+                            <option *ngFor="let step of workflowStep.steps; let i = index" [value]="step.id">
+                                {{step.displayName}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="executeIn">Execute In</label>
+                    <input type="text" id="executeIn" formControlName="executeIn">
+                </div>
+            </div>
+        </div>
+        <div class="btn-container">
+            <button (click)="addActionForm()" class="primary-btn close-sidebar">Apply</button>
+            <button (click)="showActionOverlay=false" class="primary-btn close-sidebar">Cancel</button>
+        </div>
+    </div>
+</div>

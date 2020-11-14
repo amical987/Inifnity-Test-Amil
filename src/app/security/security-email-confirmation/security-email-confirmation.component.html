@@ -1,0 +1,23 @@
+<div class="position-relative d-flex flex-column w-320px" [busyIndicator]="isBusy" [overlay]="true">
+    <div *ngIf="success" class="title-layout">
+        <h2  class="font-size-25">Congratulations! <br/> Your email has been confirmed</h2>
+        <div  *ngIf="errors" class="mb-2 text-center">
+            Thank you for confirming your email. <br />We have sent you another email with a link so that you can set up
+            your password and proceed with onboarding your account.
+        </div>
+
+    </div>
+    <div *ngIf="errors && errors.length" class="title-layout">
+        <h2>Ops!</h2>
+        <div  *ngIf="errors" class="mb-4 text-center">
+            We are very sorre, but something went wrong. If you some difficult to confirm your email please contact your
+            administrator. </div>
+        <div class="mb-2 notification error text-center" *ngFor="let error of errors">
+            {{error}}
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <p  class="font-size-15 text-center"><a class="font-weight-bolder" routerLink="/authenticate">Back to Login Page</a></p>
+    </div>
+</div>

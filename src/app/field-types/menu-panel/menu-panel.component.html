@@ -1,0 +1,15 @@
+<div style="visibility: hidden; position: fixed" [style.left]="contextMenuPosition.x"
+    [style.top]="contextMenuPosition.y" [matMenuTriggerFor]="menu">
+</div>
+<mat-menu #menu #menutrigger>
+    <ng-template matMenuContent>
+        <ng-container *ngFor="let item of items">
+            <button *ngIf="!item.childActions; else branch" (click)="onSelectMenu(item)" mat-menu-item ngClass="{{item.icon}}">{{item.label}}</button>
+            <mat-divider></mat-divider>
+            <ng-template #branch>
+                <button mat-menu-item [matMenuTriggerFor]="innerPanel.menu">{{item.label}}</button>
+                <app-menu-panel #innerPanel (onSelectMenuAction)="onSelectMenu($event)" [items]="item.childActions"></app-menu-panel>
+            </ng-template>
+        </ng-container>
+    </ng-template>
+</mat-menu>

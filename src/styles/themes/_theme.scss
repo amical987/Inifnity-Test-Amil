@@ -1,0 +1,1450 @@
+// Variables
+@import "../abstracts/variables";
+@import "../abstracts/mixins";
+@import "../abstracts/media";
+body {
+    @include themify() {
+        color: themed("textColor");
+    }
+}
+
+// Typography
+p {
+    @include themify() {
+        color: themed("textColor");
+    }
+}
+
+h2 {
+    @include themify() {
+        color: themed("textColor");
+    }
+}
+
+// Icons
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+    @include themify() {
+        color: themed("whiteBlack");
+    }
+}
+
+// Accordion
+.accordion-item {
+    @include themify() {
+        background-color: themed("backgroundColor");
+        border-bottom: 1px solid themed("borderColor");
+    }
+    .accordion-header {
+        span {
+            @include themify() {
+                color: themed("textColor");
+            }
+            &:before {
+                @include themify() {
+                    color: themed("iconColor");
+                }
+            }
+        }
+    }
+}
+
+// Buttons
+.primary-btn {
+    @include themify() {
+        background: themed("buttonBackgroundColor");
+        color: themed("buttonTextColor");
+        border: 1px solid themed("buttonBorderColor");
+    }
+    &:hover {
+        @include themify() {
+            background: themed("buttonHoverBackgroundColor");
+            color: themed("buttonHoverTextColor");
+            border: 1px solid themed("buttonHoverBorderColor");
+        }
+    }
+    &.white-btn {
+        @include themify() {
+            background: themed("buttonWhiteBackgroundColor");
+            color: themed("buttonWhiteTextColor");
+            border: 1px solid themed("buttonWhiteBorderColor");
+        }
+        &:hover {
+            @include themify() {
+                background: themed("buttonHoverWhiteBackgroundColor");
+                color: themed("buttonHoverWhiteTextColor");
+                border: 1px solid themed("buttonHoverWhiteBorderColor");
+            }
+        }
+    }
+    &.blue-border-btn {
+        @include themify() {
+            background: themed("buttonBlueBorBackgroundColor");
+            color: themed("buttonBlueBorTextColor");
+            border: 1px solid themed("buttonBlueBorBorderColor");
+        }
+        &:hover {
+            @include themify() {
+                background: themed("buttonHoverBlueBorBackgroundColor");
+                color: themed("buttonHoverBlueBorTextColor");
+                border: 1px solid themed("buttonHoverBlueBorBorderColor");
+            }
+        }
+    }
+    &.disabled {
+        @include themify() {
+            background: themed("buttonDisabledBackgroundColor");
+            color: themed("buttonDisabledTextColor");
+            border: 1px solid themed("buttonDisabledBorderColor");
+        }
+    }
+    [disabled] {
+        @include themify() {
+            background: themed("buttonDisabledBackgroundColor");
+            color: themed("buttonDisabledTextColor");
+            border: 1px solid themed("buttonDisabledBorderColor");
+        }
+    }
+}
+
+/**
+ * Content insert overlay
+ */
+#cms-new-content-container {
+    &:after {
+        @include themify() {
+            border-color: transparent transparent themed("backgroundColor")
+                transparent;
+        }
+    }
+    &:before {
+        @include themify() {
+            border-color: transparent transparent themed("borderColor")
+                transparent;
+        }
+    }
+    .content-inner-container {
+        @include themify() {
+            background-color: themed("backgroundColor");
+            &:before {
+                border: 1px solid themed("borderColor");
+            }
+        }
+    }
+    span {
+        &.title {
+            @include themify() {
+                color: themed("textColor");
+            }
+        }
+    }
+    ul {
+        li {
+            @include themify() {
+                color: themed("textColor");
+            }
+            span {
+                @include themify() {
+                    color: themed("iconColor");
+                }
+            }
+        }
+    }
+}
+
+// Dropdown
+// Forms
+.card,
+.right-sidebar {
+    .form-section {
+        span {
+            @include themify() {
+                color: themed("textColor");
+            }
+        }
+    }
+    input,
+    .select,
+    textarea {
+        @include themify() {
+            color: themed("formTextColor");
+            background-color: themed("formBackgroundColor");
+            border: 1px solid themed("formBorderColor");
+            &:focus {
+                border-color: themed("formFocusBorderColor");
+            }
+            &::-webkit-input-placeholder {
+                color: themed("formTextColor");
+            }
+            &::-moz-placeholder {
+                color: themed("formTextColor");
+            }
+            &:-ms-input-placeholder {
+                color: themed("formTextColor");
+            }
+            &:-moz-placeholder {
+                color: themed("formTextColor");
+            }
+            &:disabled {
+                background-color: $darkGray;
+            }
+        }
+    }
+    select {
+        @include themify() {
+            color: themed("formTextColor");
+            background: themed("formBackgroundColor")
+                url("/assets/images/content/select-icon.svg") no-repeat 100% 50%;
+        }
+    }
+    .control {
+        @include themify() {
+            color: themed("textColor");
+        }
+        input {
+            &:focus {
+                ~ .control-indicator {
+                    @include themify() {
+                        background: themed("whiteBlack");
+                    }
+                }
+            }
+            &:checked {
+                ~ .control-indicator {
+                    @include themify() {
+                        background: themed("iconColor");
+                    }
+                }
+                &:focus {
+                    ~ .control-indicator {
+                        @include themify() {
+                            background: themed("iconColor");
+                        }
+                    }
+                }
+            }
+            &:disabled {
+                ~ .control-indicator {
+                    background: #e6e6e6;
+                }
+            }
+        }
+        .control-indicator {
+            @include themify() {
+                background: themed("white");
+                border: 1px solid themed("iconColor");
+            }
+        }
+        &.custom-checkbox {
+            .control-indicator {
+                &:after {
+                    @include themify() {
+                        border: solid themed("checkedColor");
+                        border-width: 0 2px 2px 0;
+                    }
+                }
+            }
+            input:disabled {
+                ~ .control-indicator {
+                    &:after {
+                        border-color: #7b7b7b;
+                    }
+                }
+            }
+        }
+    }
+    .form-group {
+        .error-message {
+            background-color: #d0011b;
+            color: $white;
+        }
+        &.has-error {
+            input,
+            textarea,
+            .select {
+                border-color: #d0011b;
+                color: #d0011b;
+                &::-webkit-input-placeholder {
+                    /* Chrome/Opera/Safari */
+                    color: #d0011b;
+                }
+                &::-moz-placeholder {
+                    /* Firefox 19+ */
+                    color: #d0011b;
+                }
+                &:-ms-input-placeholder {
+                    /* IE 10+ */
+                    color: #d0011b;
+                }
+                &:-moz-placeholder {
+                    /* Firefox 18- */
+                    color: #d0011b;
+                }
+                &:focus {
+                    -webkit-box-shadow: 0 0 0 0.2rem rgba(255, 118, 135, 0.25);
+                    box-shadow: 0 0 0 0.2rem rgba(255, 118, 135, 0.25);
+                }
+            }
+            .control {
+                color: #d0011b;
+                .control-indicator {
+                    border-color: #d0011b;
+                }
+            }
+        }
+        &.lock-container,
+        &.lock-icon,
+        .lock-icon {
+            input {
+                @include themify() {
+                    color: themed("formTextColor");
+                    background-color: themed("formBackgroundColor");
+                    border: 1px solid themed("formBorderColor");
+                }
+                &.lock {
+                    @include themify() {
+                        border: none;
+                        background-color: themed("wrapperBackgroundColor");
+                    }
+                }
+            }
+            &.disabled {
+                input {
+                    @include themify() {
+                        color: themed("formDisabledTextColor");
+                        background-color: themed("formDisabledBackgroundColor");
+                    }
+                }
+                i {
+                    &:before {
+                        @include themify() {
+                            color: themed("formDisabledTextColor");
+                        }
+                    }
+                }
+            }
+            i {
+                &:before {
+                    @include themify() {
+                        color: themed("formTextColor");
+                    }
+                }
+            }
+        }
+        .assitive-msg {
+            @include themify() {
+                color: themed("buttonWhiteTextColor");
+                &:before {
+                    color: themed("buttonWhiteTextColor");
+                }
+            }
+        }
+    }
+    label {
+        color: #334e68;
+    }
+}
+
+.error-container {
+    .error-inner-container {
+        background-color: $red;
+        .error-icon {
+            &:before {
+                color: $white;
+            }
+        }
+        span {
+            color: $white;
+        }
+        ul {
+            li {
+                color: $white;
+                &:before {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+.form-group-rules {
+    @include themify() {
+        background-color: themed("sidebarBackgroundColor");
+        border: 1px solid themed("borderColor");
+    }
+}
+
+.form-validations-container {
+    ul {
+        li {
+            @include themify() {
+                color: themed("formValidationsTextColor");
+                background-color: themed("formValidationsBackgroundColor");
+                border: 1px solid themed("formValidationsBorderColor");
+            }
+            i {
+                @include themify() {
+                    color: themed("formValidationsTextColor");
+                }
+            }
+        }
+    }
+}
+
+// Modal
+.mdl-container {
+    @include themify() {
+        background-color: themed("backgroundColor");
+        border: 1px solid themed("borderColor");
+    }
+    .mdl-header {
+        span {
+            &.mdl-title {
+                @include themify() {
+                    color: themed("blackWhite");
+                }
+            }
+            &.material-icons {
+                @include themify() {
+                    color: themed("blackWhite");
+                }
+            }
+        }
+    }
+    .mdl-footer {
+        &:before {
+            @include themify() {
+                background-color: themed("borderColor");
+            }
+        }
+    }
+}
+
+// Multiple list
+.multiple-tree-list-container {
+    .left-part,
+    .right-part {
+        @include themify() {
+            background-color: themed("backgroundColor");
+            border: 1px solid themed("borderColor");
+        }
+        .intro {
+            @include themify() {
+                border-bottom: 1px solid themed("borderColor");
+            }
+            span {
+                @include themify() {
+                    color: themed("breadcrumbTextColor");
+                }
+            }
+        }
+    }
+    .icon-part {
+        span {
+            @include themify() {
+                background-color: themed("backgroundColor");
+                color: themed("buttonHoverSidebarTextColor");
+                border: 1px solid themed("buttonHoverSidebarBorderColor");
+            }
+            &:hover {
+                @include themify() {
+                    color: themed("whiteColor");
+                    background-color: themed("buttonHoverSidebarBorderColor");
+                }
+            }
+        }
+    }
+    .right-part {
+        ul {
+            li {
+                @include themify() {
+                    color: themed("multipleListTextColor");
+                }
+                &:hover {
+                    @include themify() {
+                        background-color: themed("multipleListHoverBackground");
+                        color: themed("multipleListHoverTextColor");
+                    }
+                }
+                &:before {
+                    @include themify() {
+                        color: themed("multipleListHoverTextColor");
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Notification
+.notification-container {
+    @include themify() {
+        background-color: themed("backgroundColor");
+        border: 1px solid themed("borderColor");
+    }
+    .notification-message {
+        span {
+            @include themify() {
+                color: themed("blackWhite");
+            }
+        }
+        p {
+            @include themify() {
+                color: themed("textColor");
+            }
+        }
+    }
+    .notification-close {
+        span {
+            @include themify() {
+                color: themed("blackWhite");
+            }
+        }
+    }
+    &.success {
+        .notification-message {
+            &:before {
+                color: $green;
+            }
+        }
+        &:before {
+            background-color: $green;
+        }
+    }
+    &.info {
+        .notification-message {
+            &:before {
+                color: $skyeBlue;
+            }
+        }
+        &:before {
+            background-color: $skyeBlue;
+        }
+    }
+    &.error {
+        .notification-message {
+            &:before {
+                color: $red;
+            }
+        }
+        &:before {
+            background-color: $red;
+        }
+    }
+}
+
+// Breadcrumb
+.cms-breadcrumb {
+    @include themify() {
+        background-color: themed("backgroundColor");
+        border-color: themed("borderColor");
+    }
+    ul {
+        li {
+            &:after {
+                @include themify() {
+                    color: themed("breadcrumbIconColor");
+                }
+            }
+            &:last-child {
+                a {
+                    @include themify() {
+                        color: themed("breadcrumbLastTextColor");
+                    }
+                }
+            }
+            a {
+                @include themify() {
+                    color: themed("breadcrumbTextColor");
+                }
+                &:after {
+                    @include themify() {
+                        background-color: themed("breadcrumbTextColor");
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Grid
+.wrapper {
+    @include themify() {
+        background-color: themed("wrapperBackgroundColor");
+    }
+}
+
+// Header
+#header {
+    @include themify() {
+        background-color: themed("headerBackgroundColor");
+        &:after {
+            background-color: themed("headerBorderColor");
+        }
+    }
+    .logo-container {
+        .mat-icon-button {
+                @include themify() {
+                    color: themed("whiteBlack");
+                    background: transparent;
+                }
+        }
+    }
+    .header-container {
+        .header-search-container {
+            .form-group-container {
+                .form-group {
+                    &:before {
+                        @include themify() {
+                            color: themed("headerInputColor");
+                        }
+                    }
+                }
+                input {
+                    @include themify() {
+                        color: themed("headerInputColor");
+                        background-color: themed("headerInputBackgroundColor");
+                        border-color: themed("headerInputBorderColor");
+                    }
+                    &::-webkit-input-placeholder {
+                        @include themify() {
+                            color: themed("headerInputColor");
+                        }
+                    }
+                    &::-moz-placeholder {
+                        @include themify() {
+                            color: themed("headerInputColor");
+                        }
+                    }
+                    &:-ms-input-placeholder {
+                        @include themify() {
+                            color: themed("headerInputColor");
+                        }
+                    }
+                    &:-moz-placeholder {
+                        @include themify() {
+                            color: themed("headerInputColor");
+                        }
+                    }
+                }
+            }
+        }
+        .header-nav-container {
+            ul {
+                li {
+                    &.show {
+                        [class^="icon-"],
+                        [class*=" icon-"] {
+                            &:before {
+                                @include themify() {
+                                    color: themed("headerIconHover");
+                                }
+                            }
+                        }
+                        span {
+                            &.icon-settings,
+                            &.icon-bell {
+                                &:after {
+                                    @include themify() {
+                                        background: linear-gradient(
+                                            themed("whiteBlack") 0%,
+                                            themed("whiteBlack") 57.95%,
+                                            themed("whiteBlack") 100%
+                                        );
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .header-user-info {
+                        img {
+                            border: 1px solid;
+                            @include themify() {
+                                border-color: themed("whiteBlack");
+                            }
+                        }
+                        span {
+                            &.name {
+                                @include themify() {
+                                    color: themed("whiteBlack");
+                                }
+                            }
+                            &.title {
+                                @include themify() {
+                                    color: themed("whiteBlack");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        @include media-xs {
+            @include themify() {
+                background-color: themed("headerBackgroundColor");
+            }
+        }
+    }
+}
+
+// Sidebar
+.open-submenu {
+    .submenu {
+        li {
+            &.active-submenu {
+                @include themify() {
+                    background-color: themed("activeMenuBackground");
+                }
+                a {
+                    @include themify() {
+                        color: themed("iconTextHoverColor");
+                    }
+                    &:before {
+                        @include themify() {
+                            background-color: themed("iconColor");
+                        }
+                    }
+                    [class^="icon-"]:before,
+                    [class*=" icon-"]:before {
+                        @include themify() {
+                            color: themed("iconHoverColor");
+                        }
+                    }
+                }
+            }
+            a {
+                @include themify() {
+                    color: themed("iconTextColor");
+                }
+            }
+        }
+    }
+}
+
+.submenu {
+    @include themify() {
+        background-color: themed("submenuBackgroundColor");
+        border-color: themed("submenuBorderColor");
+    }
+    [class^="icon-"]:before,
+    [class*=" icon-"]:before {
+        @include themify() {
+            color: themed("iconColor");
+        }
+    }
+    li {
+        a {
+            @include themify() {
+                color: themed("iconTextColor");
+            }
+        }
+    }
+    .hide-submenu {
+        i {
+            &:before {
+                @include themify() {
+                    color: themed("submenuSecondIconColor");
+                }
+            }
+        }
+    }
+    li {
+        &.active-submenu {
+            @include themify() {
+                background-color: themed("activeMenuBackground");
+            }
+            a {
+                @include themify() {
+                    color: themed("iconTextHoverColor");
+                }
+                &:before {
+                    @include themify() {
+                        background-color: themed("iconColor");
+                    }
+                }
+                [class^="icon-"]:before,
+                [class*=" icon-"]:before {
+                    @include themify() {
+                        color: themed("iconHoverColor");
+                    }
+                }
+            }
+        }
+        a {
+            @include themify() {
+                color: themed("iconTextColor");
+            }
+        }
+    }
+}
+
+.right-sidebar {
+    @include themify() {
+        background: themed("backgroundColor");
+        border: 1px solid themed("borderColor");
+    }
+    .list-header {
+        span {
+            @include themify() {
+                color: themed("darkBlueHeader");
+            }
+        }
+        a {
+            &:after {
+                @include themify() {
+                    color: themed("darkBlueHeader");
+                }
+            }
+        }
+    }
+    .list-body {
+        span {
+            @include themify() {
+                color: themed("textColor");
+            }
+            &.subtitle {
+                @include themify() {
+                    color: themed("blackWhite");
+                }
+            }
+        }
+        .radio-content {
+            .radio-item {
+                @include themify() {
+                    label {
+                        color: themed("buttonSidebarTextColor");
+                        background: themed("buttonSidebarBackgroundColor");
+                        border: 1px solid themed("buttonSidebarBorderColor");
+                        &:hover {
+                            background-color: themed(
+                                "buttonSidebarBackgroundColor"
+                            );
+                            border-color: themed(
+                                "buttonHoverSidebarBorderColor"
+                            );
+                            color: themed("buttonHoverSidebarTextColor");
+                        }
+                    }
+                    input[type="radio"]:checked ~ label {
+                        background-color: themed(
+                            "buttonSidebarBackgroundColor"
+                        );
+                        border-color: themed("buttonHoverSidebarBorderColor");
+                        color: themed("buttonHoverSidebarTextColor");
+                    }
+                }
+            }
+            &.theme-content {
+                input[type="radio"]:checked ~ label {
+                    &:after {
+                        color: $green;
+                        background-color: $grayLight;
+                    }
+                }
+            }
+        }
+        label {
+            @include themify() {
+                color: themed("textColor");
+            }
+        }
+    }
+    .list-footer {
+        span {
+            @include themify() {
+                color: themed("textColor");
+            }
+        }
+        ul {
+            li {
+                a {
+                    @include themify() {
+                        color: themed("iconTextColor");
+                    }
+                    &:after {
+                        @include themify() {
+                            background: themed("iconTextColor");
+                        }
+                    }
+                }
+            }
+        }
+        .btn-container {
+            &:before {
+                @include themify() {
+                    background-color: themed("borderColor");
+                }
+            }
+        }
+    }
+}
+
+#sidebar {
+    @include themify() {
+        background-color: themed("sidebarBackgroundColor");
+        &:after {
+            background-color: themed("submenuBorderColor");
+        }
+    }
+    ul {
+        > li {
+            a {
+                @include themify() {
+                    color: themed("iconTextColor");
+                }
+                &:before {
+                    @include themify() {
+                        background-color: themed("sidebarBackgroundColor");
+                    }
+                }
+                [class^="icon-"]:before,
+                [class*=" icon-"]:before {
+                    @include themify() {
+                        color: themed("iconColor");
+                    }
+                }
+            }
+            &:hover {
+                @include themify() {
+                    background-color: themed("activeMenuBackground");
+                }
+                a {
+                    @include themify() {
+                        color: themed("iconTextHoverColor");
+                    }
+                    &:before {
+                        @include themify() {
+                            background-color: themed("iconColor");
+                        }
+                    }
+                    [class^="icon-"]:before,
+                    [class*=" icon-"]:before {
+                        @include themify() {
+                            color: themed("iconHoverColor");
+                        }
+                    }
+                }
+            }
+            &.active {
+                @include themify() {
+                    background-color: themed("activeMenuBackground");
+                }
+                a {
+                    @include themify() {
+                        color: themed("iconTextHoverColor");
+                    }
+                    &:before {
+                        @include themify() {
+                            background-color: themed("iconColor");
+                        }
+                    }
+                    [class^="icon-"]:before,
+                    [class*=" icon-"]:before {
+                        @include themify() {
+                            color: themed("iconHoverColor");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .hide-sidebar {
+        i {
+            &:before {
+                @include themify() {
+                    color: themed("submenuFirstIconColor");
+                }
+            }
+        }
+    }
+}
+
+// forms
+.form-container {
+    label {
+        color: $blue;
+        &.templateIdLabel {
+            @include themify() {
+                color: themed("formTextColor");
+            }
+        }
+    }
+}
+
+// Tabs
+.custom-tabs {
+    .tab-label {
+        @include themify() {
+            color: themed("customTabsTextColor");
+            background-color: themed("backgroundColor");
+        }
+        &:hover {
+            @include themify() {
+                color: themed("customTabsTextColor");
+                background-color: themed("backgroundColor");
+                border-bottom-color: themed("backgroundColor");
+            }
+        }
+    }
+    .tab-content {
+        @include themify() {
+            background-color: themed("backgroundColor");
+        }
+        &:before {
+            @include themify() {
+                background-color: themed("borderColor");
+            }
+        }
+    }
+    .tab-switch {
+        &:checked {
+            + .tab-label {
+                @include themify() {
+                    background-color: themed("backgroundColor");
+                    color: themed("customTabsActiveTextColor");
+                    border-bottom: 2px solid themed("customTabsActiveTextColor");
+                }
+            }
+        }
+    }
+
+    .design-intro {
+        @include themify() {
+            border-bottom: 1px solid themed("borderColor");
+        }
+        .desing-intro-icon {
+            &:after {
+                @include themify() {
+                    color: themed("iconColor");
+                }
+            }
+            &:before {
+                @include themify() {
+                    background-color: themed("formDisabledBackgroundColor");
+                }
+            }
+        }
+        .design-intro-icon-overlay{
+            @include themify() {
+                background-color: themed("formDisabledBackgroundColor");
+                color: themed("iconColor");
+            }
+        }
+    }
+
+    &.second-tabs {
+        .tab {
+            .active-tab {
+                .tab-label {
+                    @include themify() {
+                        color: themed("customTabsActiveTextColor");
+                        background-color: themed("backgroundColor");
+                        border-bottom: 2px solid
+                            themed("customTabsActiveTextColor");
+                    }
+                }
+            }
+            > .tab-label {
+                @include themify() {
+                    color: themed("customTabsActiveTextColor");
+                    background-color: themed("backgroundColor");
+                    border-bottom: 2px solid themed("customTabsActiveTextColor");
+                }
+            }
+        }
+    }
+}
+
+// Card
+.card {
+    @include themify() {
+        background-color: themed("backgroundColor");
+    }
+    .card-header {
+        @include themify() {
+            background-color: themed("backgroundColor");
+            border: 1px solid themed("borderColor");
+        }
+        span {
+            color: #486581;
+        }
+    }
+    .card-body {
+        @include themify() {
+            background-color: themed("backgroundColor");
+            border: 1px solid themed("borderColor");
+        }
+    }
+}
+
+.custom-tabs {
+    @include themify() {
+        &:before {
+            border: 1px solid themed("borderColor");
+            border-bottom: none;
+        }
+        .tab-content {
+            border: 1px solid themed("borderColor");
+            border-top: none;
+        }
+    }
+}
+
+// Headers
+.section-title {
+    @include themify() {
+        background-color: themed("backgroundColor");
+        border-color: themed("borderColor");
+    }
+    [class^="icon-"]:before,
+    [class*=" icon-"]:before {
+        @include themify() {
+            color: themed("iconColor");
+        }
+    }
+    span {
+        @include themify() {
+            color: themed("textColor");
+        }
+    }
+}
+
+.save-edit-container {
+    @include themify() {
+        background-color: themed("backgroundColor");
+        border-color: themed("borderColor");
+    }
+    button {
+        @include themify() {
+            color: themed("headersButtonTextColor");
+        }
+        &:hover {
+            @include themify() {
+                background-color: themed("headersHoverButtonBackground");
+                color: themed("headersHoverButtonTextColor");
+            }
+            &:before {
+                @include themify() {
+                    color: themed("headersHoverButtonIconColor");
+                }
+            }
+        }
+        &.active {
+            @include themify() {
+                background-color: themed("headersHoverButtonBackground");
+                color: themed("headersHoverButtonTextColor");
+            }
+            &:before {
+                @include themify() {
+                    color: themed("headersHoverButtonIconColor");
+                }
+            }
+        }
+        &:before {
+            @include themify() {
+                color: themed("headersButtonIconColor");
+            }
+        }
+        &.add-border {
+            &:after {
+                @include themify() {
+                    background-color: themed("borderColor");
+                }
+            }
+        }
+    }
+    &.ribbons-container {
+        @include themify() {
+            border-left: 1px solid themed("borderColor");
+            border-bottom: 1px solid themed("borderColor");
+        }
+        .custom-tabs {
+            .tab-label {
+                @include themify() {
+                    color: themed("textColor");
+                    border-right: 1px solid themed("backgroundColor");
+                    border-top: 2px solid themed("backgroundColor");
+                }
+            }
+            .tab {
+                &:first-child {
+                    .tab-switch {
+                        + .tab-label {
+                            @include themify() {
+                                border-right: 1px solid
+                                    themed("backgroundColor");
+                                border-left: 1px solid themed("backgroundColor");
+                            }
+                        }
+                        &:checked {
+                            + .tab-label {
+                                @include themify() {
+                                    border-left: 1px solid
+                                        themed("backgroundColor");
+                                    border-right: 1px solid
+                                        themed("borderColor");
+                                }
+                            }
+                        }
+                    }
+                }
+                &:last-child {
+                    .tab-switch {
+                        + .tab-label {
+                            @include themify() {
+                                border-right: 1px solid
+                                    themed("backgroundColor");
+                                border-left: 1px solid themed("backgroundColor");
+                            }
+                        }
+                        &:checked {
+                            + .tab-label {
+                                @include themify() {
+                                    border-right: 1px solid
+                                        themed("backgroundColor");
+                                    border-left: 1px solid themed("borderColor");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .tab-switch {
+                &:checked {
+                    + .tab-label {
+                        @include themify() {
+                            background: themed("backgroundColor");
+                            border-right: 1px solid themed("borderColor");
+                            border-left: 1px solid themed("borderColor");
+                            border-top: 2px solid themed("activeTabBorderColor");
+                            color: themed("breadcrumbTextColor");
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.section-item-container {
+    &.insert-item-container {
+        .title {
+            @include themify() {
+                color: themed("textColor");
+                &:before {
+                    color: themed("iconColor");
+                }
+            }
+        }
+        .section-item {
+            .order-item {
+                @include themify() {
+                    color: themed("formTextColor");
+                    background-color: themed("formDisabledBackgroundColor");
+                    border: 1px solid themed("formBorderColor");
+                }
+                span {
+                    @include themify() {
+                        color: themed("formTextColor");
+                    }
+                    &:before {
+                        @include themify() {
+                            color: themed("iconColor");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .delete-icon {
+        &:after {
+            @include themify() {
+                color: themed("iconColor");
+            }
+        }
+    }
+    .settings-icon {
+        &:after {
+            @include themify() {
+                color: themed("iconColor");
+            }
+        }
+    }
+    .title {
+        @include themify() {
+            background-color: themed("backgroundColor");
+            color: themed("textColor");
+            border: 1px solid themed("iconColor");
+            border-bottom-color: themed("backgroundColor");
+        }
+    }
+    .section-item {
+        @include themify() {
+            border: 1px solid themed("iconColor");
+        }
+        .section-item-icons-container {
+            .settings-icon {
+                &:after {
+                    @include themify() {
+                        color: themed("iconColor");
+                    }
+                }
+            }
+        }
+    }
+    .add-section {
+        @include themify() {
+            color: themed("iconColor");
+        }
+        &:after {
+            @include themify() {
+                background: themed("iconColor");
+            }
+        }
+    }
+    &.inactive {
+        .title {
+            @include themify() {
+                border: 1px dashed themed("borderColor");
+                border-bottom-color: themed("backgroundColor");
+            }
+        }
+        .section-item {
+            @include themify() {
+                border: 1px dashed themed("borderColor");
+            }
+        }
+    }
+    .insert-input-container {
+        input {
+            @include themify() {
+                border: 1px solid themed("formBorderColor");
+                color: themed("textColor");
+            }
+        }
+    }
+}
+
+.node-icon {
+    i {
+        @include themify() {
+            &:before {
+                color: themed("iconColor");
+            }
+        }
+    }
+}
+
+.toggle-children {
+    @include themify() {
+        &:before {
+            color: themed("iconColor");
+        }
+    }
+}
+.textbox-lock {
+    i {
+        &::before {
+            @include themify() {
+                color: themed("textColor");
+            }
+        }
+    }
+}
+
+.permissions-inner-container {
+    > span {
+        @include themify() {
+            color: themed("breadcrumbTextColor");
+        }
+    }
+}
+
+.node-drop-slot {
+    &.is-dragging-over{
+        @include themify() {
+            background: themed("activeMenuBackground");
+            height: 20px;
+            border: 2px dotted themed("formBorderColor");
+        }
+    }
+}
+.node-content-wrapper {
+    &.is-dragging-over {
+        @include themify() {
+            background: themed("activeMenuBackground");
+            box-shadow: inset 0 0 1px themed("formBorderColor");
+        }
+    }
+}
+
+.mat-menu-content {
+    button {
+        @include themify {
+            &::before,
+            &::after {
+                color: themed("iconColor");
+            }
+        }
+    }
+}
+.mat-accordion {
+    .mat-expansion-panel {
+        box-shadow: none;
+        .mat-expansion-panel-header {
+            .mat-expansion-panel-header-title {
+                @include themify() {
+                    color: themed(textColor);
+                }
+            }
+            .mat-expansion-indicator {
+                &::after {
+                    @include themify {
+                        color: themed(iconColor);
+                    }
+                }
+            }
+        }
+    }
+}
+.list-body{
+    .selected-icon-group{
+        .mat-icon{
+            @include themify(){
+                color: themed("iconColor");
+            }
+        }
+    }
+    .icons-list{
+        .mat-icon{
+            @include themify(){
+                color: themed("iconColor");
+            }
+            &:hover{
+                @include themify(){
+                    background-color: themed("activeMenuBackground");
+                }
+            }
+            &.active-icon{
+                @include themify(){
+                    background-color: themed("activeMenuBackground");
+                }
+            }
+        }
+    }
+}
+.linear-list-pages{
+    button{
+        cursor: pointer;
+        .mat-icon{
+            margin-right: 8px;
+            @include themify(){
+                color: themed("iconColor");
+            }
+        }
+        span{
+            @include themify(){
+                color: themed("iconTextColor");
+            }
+        }
+    }
+}
