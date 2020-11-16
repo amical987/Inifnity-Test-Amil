@@ -19,6 +19,7 @@ export class CulturesComponent implements OnInit {
     culture: MatTableDataSource<Culture> = new MatTableDataSource();
     showOverlay: boolean = false;
     cultureForm: FormGroup;
+    searchControl: FormControl;
     displayMessage: { [key: string]: string } = {};
 
     private validationMessages: { [key: string]: { [key: string]: string } } = {};

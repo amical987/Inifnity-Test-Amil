@@ -10,7 +10,6 @@ import { FieldTypesModule } from '../field-types/field-types.module';
 import { SettingsApiService } from './services/settings-api.service';
 
 
-
 @NgModule({
   declarations: [SettingsComponent, CulturesComponent],
   imports: [

@@ -13,7 +13,7 @@ const routes: Routes = [
       component: SettingsComponent,
       data: { title: "Settings" },
       children: [
-          { path: "cultures", component: CulturesComponent, data: { title: "Settings Cultures" } }
+          { path: "", component: CulturesComponent, data: { title: "Settings Cultures" } }
       ]
     },
     { path: "", component: HeaderComponent, outlet: "header" },
