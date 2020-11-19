@@ -1,44 +1,91 @@
 <div class="section-title">
     <i class="icon-placeholders"></i>
-    <span>Section Titl1e</span>
+    <span>Section Workflow</span>
 </div>
 <div class="save-edit-container">
-    <button class="save-btn" *ngIf="!workflowId"  (click)="save()">Save</button>
-    <button class="save-btn" *ngIf="workflowId"  (click)="update()">Update</button>
+    <button class="save-btn" *ngIf="!workflowId" (click)="save()">Save</button>
+    <button class="save-btn" *ngIf="workflowId" (click)="update(); steps.updateSteps()">Update</button>
 </div>
 <div class="card">
     <div class="custom-tabs second-tabs">
         <app-workflow-edit-navigation></app-workflow-edit-navigation>
-        <div class="tab-content">
-            <div class="tab-inner-container">
-                <div class="form-container" *ngIf="workflowForm" >
-                    <div class="form-section" [formGroup]="workflowForm" >
-                        <span>General</span>
-                        <div class="form-group">
-                            <div class="error-message">
-                                <strong>Error</strong>
-                                Error text Error text Error text Error text Error textError textError text
+        <div class="tab">
+            <div class="tab-content">
+                <div class="form-container">
+                    <mat-accordion multi>
+                        <mat-expansion-panel expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Info
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-lg-9 col-xl-7" *ngIf="workflowForm">
+                                    <form novalidate [formGroup]="workflowForm">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-12 col-md-4">
+                                                    <label>General</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="error-message">
+                                                <strong>Error</strong>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-4">
+                                                    <label for="workflowName">Name</label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="workflowName" formControlName="name">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-12 col-md-4">
+                                                    <label for="workflowDisplayName">Display Name</label>
+                                                </div>
+                                                <div class="col-12 col-md-8">
+                                                    <input type="text" id="workflowDisplayName"
+                                                        formControlName="displayName">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <!-- <div class="row">
+                                                <div class="col-12 col-md-4"> -->
+                                                    <label class="control custom-checkbox">Use CheckIn CheckOut
+                                                        <input type="checkbox" formControlName="useCheckInCheckOut" />
+                                                        <div class="control-indicator"></div>
+                                                    </label>
+                                                </div>
+                                                <!-- </div>
+                                                <div class="col-12 col-md-8"> -->
+                                                    <div class="form-group">
+                                                    <label class="control custom-checkbox">Enabled
+                                                        <input type="checkbox" formControlName="enabled" />
+                                                        <div class="control-indicator"></div>
+                                                    </label>
+                                                <!-- </div>
+                                            </div> -->
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                            <label for="workflowName">Name</label>
-                            <input type="text" id="workflowName" formControlName="name" >
-                        </div>
-                        <div class="form-group">
-                            <label for="workflowDisplayName">Display Name</label>
-                            <input type="text" id="workflowDisplayName" formControlName="displayName">
-                        </div>
-                        <div class="form-group">
-                            <label class="control custom-checkbox">Use CheckIn CheckOut
-                                <input type="checkbox" formControlName="useCheckInCheckOut"  />
-                                <div class="control-indicator"></div>
-                            </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="control custom-checkbox">Enabled
-                                <input type="checkbox" formControlName="enabled" />
-                                <div class="control-indicator"></div>
-                            </label>
-                        </div>
-                    </div>
+                        </mat-expansion-panel>
+                        <mat-expansion-panel expanded>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Steps
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div class="form-group inline-label">
+                                <router-outlet #steps></router-outlet>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-accordion>
                 </div>
             </div>
         </div>

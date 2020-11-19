@@ -19,8 +19,9 @@ const routes: Routes = [
         children: [
             { path: '', component: WorkflowListComponent, data: { title: "List" }},
             { path: "create", component: WorkflowEditComponent, data: { title: "Workflow Create" } },
-            { path: "edit/:id", component: WorkflowEditComponent, data: { title: "Workflow Edit" } },
-            { path: "edit/:id/steps", component: WorkflowStepsComponent, data: { title: "Workflow Edit" } },
+            { path: "edit/:id", component: WorkflowEditComponent, data: { title: "Workflow Edit" }, children: [
+                { path: "", component: WorkflowStepsComponent, data: { title: "Workflow Steps" } }
+            ] },
             { path: "actions", component: WorkflowActionComponent, data: { title: "Workflow Actions" } },
             { path: "edit/:id/scopes", component: WorkflowScopesComponent, data: { title: "Workflow Scopes" } }
         ]

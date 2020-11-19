@@ -14,6 +14,8 @@ import { WorkflowActionComponent } from './workflow-action/workflow-action.compo
 import { WorkflowEditNavigationComponent } from './workflow-edit-navigation/workflow-edit-navigation.component';
 import { WorkflowScopesComponent } from './workflow-scopes/workflow-scopes.component';
 import { FieldTypesModule } from '../field-types/field-types.module';
+import { SharedModule } from '../shared/shared.module';
+import { OverlayModule } from '../overlay/overlay.module';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { FieldTypesModule } from '../field-types/field-types.module';
         LayoutModule,
         MaterialCustomModule,
         ReactiveFormsModule,
-        FieldTypesModule
+        FieldTypesModule,
+        SharedModule,
+        OverlayModule
     ],
     providers: [
         WorkflowApiService
