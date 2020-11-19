@@ -1,16 +1,16 @@
-<div class="section-title">
+<!-- <div class="section-title">
     <i class="icon-placeholders"></i>
     <span>Section Titl1e</span>
-</div>
-<div class="save-edit-container">
+</div> -->
+<!-- <div class="save-edit-container"> -->
     <!-- <button class="save-btn">Save</button> -->
-    <button class="save-btn" (click)="updateSteps()">Update</button>
-</div>
+    <!-- <button class="save-btn" (click)="updateSteps()">Update-steps</button>
+</div> -->
 <div class="card">
-    <div class="custom-tabs second-tabs">
-        <app-workflow-edit-navigation></app-workflow-edit-navigation>
-        <div class="tab-content">
-            <div class="tab-inner-container">
+    <!-- <div class="custom-tabs second-tabs"> -->
+        <!-- <app-workflow-edit-navigation></app-workflow-edit-navigation> -->
+        <!-- <div class="tab-content">
+            <div class="tab-inner-container"> -->
                 <div class="workflow-container">
                     <div class="workflow-steps" cdkDropList [cdkDropListData]="workflowStep.steps"
                         (cdkDropListDropped)="dropGroup($event)">
@@ -48,9 +48,9 @@
                     </div>
                     <button class="btn-default" (click)="showStepForm()">Create State</button>
                 </div>
-            </div>
+            <!-- </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <div class="right-sidebar quick-info" [ngClass]="{'show': showStepOverlay}">
